@@ -1,545 +1,658 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <title>Prithwiraj Das | Lead Software Developer</title>
-
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Responsive Resume Template">
-    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
-    <link rel="shortcut icon" href="fontawesome.com/icons/user-tie?style=solid">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-
-    <!-- FontAwesome JS-->
-    <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
-
-    <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/pillar-4.css">
+    <title>Prithwiraj Das — Lead Backend / Platform Engineer</title>
+    <meta name="description" content="12+ years building cloud-native, transaction-heavy SaaS systems. Distributed Systems, FinTech & Capital Markets. .NET, AWS, Event-Driven Architecture.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-display: 'Newsreader', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --bg: #FAFAF7;
+            --bg-alt: #F0EFE9;
+            --bg-card: #FFFFFF;
+            --text-primary: #1A1A18;
+            --text-secondary: #5C5C56;
+            --text-tertiary: #8A8A82;
+            --accent: #2D5A3D;
+            --accent-light: #E8F0EB;
+            --accent-warm: #8B6914;
+            --accent-warm-light: #FDF6E3;
+            --border: #E2E1DB;
+            --border-light: #EDECE6;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+            --radius: 6px;
+            --max-w: 860px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        [data-theme="dark"] {
+            --bg: #141413;
+            --bg-alt: #1C1C1A;
+            --bg-card: #1E1E1C;
+            --text-primary: #E8E7E1;
+            --text-secondary: #A3A29B;
+            --text-tertiary: #6E6D67;
+            --accent: #5FA978;
+            --accent-light: #1E2E24;
+            --accent-warm: #C9A032;
+            --accent-warm-light: #2A2518;
+            --border: #2E2E2B;
+            --border-light: #252523;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text-primary);
+            font-size: 16px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            transition: background var(--transition), color var(--transition);
+        }
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border-light);
+            transition: background var(--transition), border var(--transition);
+        }
+        .nav-inner {
+            max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+            height: 56px; display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-name {
+            font-family: var(--font-display); font-weight: 600; font-size: 18px;
+            color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em;
+        }
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-links a {
+            font-size: 13px; font-weight: 500; color: var(--text-secondary);
+            text-decoration: none; transition: color var(--transition); letter-spacing: 0.02em;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .theme-toggle {
+            background: none; border: 1px solid var(--border); border-radius: 50%;
+            width: 32px; height: 32px; cursor: pointer; display: flex;
+            align-items: center; justify-content: center; color: var(--text-secondary);
+            transition: all var(--transition); font-size: 14px;
+        }
+        .theme-toggle:hover { border-color: var(--text-tertiary); color: var(--text-primary); }
+        section { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+        .section-label {
+            font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: block;
+        }
+        .section-title {
+            font-family: var(--font-display); font-size: 32px; font-weight: 500;
+            letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 32px; color: var(--text-primary);
+        }
+        .hero { padding-top: 120px; padding-bottom: 80px; }
+        .hero-layout {
+            display: flex; align-items: flex-start; gap: 40px;
+        }
+        .hero-text { flex: 1; }
+        .hero-photo {
+            width: 160px; height: 160px; border-radius: 50%; flex-shrink: 0;
+            background: var(--bg-alt); border: 2px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; margin-top: 8px;
+        }
+        .hero-photo img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .hero-photo-placeholder {
+            font-size: 12px; color: var(--text-tertiary); text-align: center;
+            font-family: var(--font-mono); letter-spacing: 0.05em;
+        }
+        .hero-overline {
+            font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: block;
+        }
+        .hero h1 {
+            font-family: var(--font-display); font-size: clamp(42px, 6vw, 64px);
+            font-weight: 500; letter-spacing: -0.04em; line-height: 1.08; margin-bottom: 28px;
+        }
+        .hero h1 em { font-style: italic; color: var(--accent); }
+        .hero-summary {
+            font-size: 17px; line-height: 1.8; color: var(--text-secondary);
+            max-width: 640px; margin-bottom: 40px;
+        }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; color: var(--text-tertiary); }
+        .hero-meta a {
+            color: var(--text-secondary); text-decoration: none;
+            border-bottom: 1px solid var(--border); transition: all var(--transition);
+        }
+        .hero-meta a:hover { color: var(--accent); border-color: var(--accent); }
+        .hero-meta span::before {
+            content: ''; display: inline-block; width: 4px; height: 4px;
+            background: var(--text-tertiary); border-radius: 50%; margin-right: 8px; vertical-align: middle;
+        }
+        .divider { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+        .divider hr { border: none; height: 1px; background: var(--border); }
+        .experience, .skills, .projects, .writing, .achievements, .education, .contact {
+            padding-top: 72px; padding-bottom: 72px;
+        }
+        .role { padding: 32px 0; border-bottom: 1px solid var(--border-light); }
+        .role:last-child { border-bottom: none; }
+        .role-header {
+            display: flex; justify-content: space-between; align-items: baseline;
+            flex-wrap: wrap; gap: 8px; margin-bottom: 6px;
+        }
+        .role-title {
+            font-family: var(--font-display); font-size: 20px; font-weight: 500; letter-spacing: -0.02em;
+        }
+        .role-date { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); white-space: nowrap; }
+        .role-company { font-size: 14px; color: var(--accent); font-weight: 500; margin-bottom: 12px; }
+        .role-intro { font-size: 15px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7; }
+        .role-bullets { list-style: none; padding: 0; }
+        .role-bullets li {
+            font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+            padding-left: 16px; position: relative; margin-bottom: 8px;
+        }
+        .role-bullets li::before { content: '\2014'; position: absolute; left: 0; color: var(--text-tertiary); }
+        .role-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+        .role-tech span {
+            font-family: var(--font-mono); font-size: 11px; padding: 3px 10px;
+            background: var(--bg-alt); color: var(--text-secondary); border-radius: 3px;
+            transition: background var(--transition);
+        }
+        .older-roles { display: none; }
+        .older-roles.show { display: block; }
+        .show-more-btn {
+            font-family: var(--font-body); font-size: 14px; font-weight: 500;
+            color: var(--accent); background: none; border: 1px solid var(--accent);
+            border-radius: var(--radius); padding: 10px 24px; cursor: pointer;
+            transition: all var(--transition); margin-top: 24px; display: inline-block;
+        }
+        .show-more-btn:hover { background: var(--accent); color: white; }
+        .skills-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;
+        }
+        .skill-card {
+            padding: 24px; background: var(--bg-card); border: 1px solid var(--border-light);
+            border-radius: var(--radius); transition: all var(--transition);
+        }
+        .skill-card:hover { border-color: var(--border); box-shadow: var(--shadow-sm); }
+        .skill-card-title {
+            font-family: var(--font-display); font-size: 16px; font-weight: 500;
+            margin-bottom: 12px; letter-spacing: -0.01em;
+        }
+        .skill-card-items { font-size: 13px; color: var(--text-secondary); line-height: 1.9; }
+        .project-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
+        }
+        .project-card {
+            padding: 28px; background: var(--bg-card); border: 1px solid var(--border-light);
+            border-radius: var(--radius); transition: all var(--transition);
+        }
+        .project-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .project-card-label {
+            font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary);
+            letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;
+        }
+        .project-card-title {
+            font-family: var(--font-display); font-size: 18px; font-weight: 500;
+            margin-bottom: 10px; letter-spacing: -0.02em;
+        }
+        .project-card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; }
+        .project-card-link {
+            font-family: var(--font-mono); font-size: 12px; color: var(--accent);
+            text-decoration: none; border-bottom: 1px solid transparent; transition: border var(--transition);
+        }
+        .project-card-link:hover { border-bottom-color: var(--accent); }
+        .writing-placeholder {
+            padding: 48px; background: var(--bg-alt); border-radius: var(--radius); text-align: center;
+        }
+        .writing-placeholder p { font-size: 15px; color: var(--text-tertiary); font-style: italic; }
+        .achievement-list { list-style: none; padding: 0; display: grid; gap: 16px; }
+        .achievement-list li {
+            font-size: 15px; color: var(--text-secondary); padding-left: 28px;
+            position: relative; line-height: 1.7;
+        }
+        .achievement-list li::before {
+            content: '\25C6'; position: absolute; left: 0; color: var(--accent-warm); font-size: 10px; top: 5px;
+        }
+        .edu-grid { display: grid; gap: 20px; }
+        .edu-item {
+            display: flex; justify-content: space-between; align-items: baseline;
+            flex-wrap: wrap; gap: 8px; padding-bottom: 16px; border-bottom: 1px solid var(--border-light);
+        }
+        .edu-item:last-child { border-bottom: none; }
+        .edu-degree { font-family: var(--font-display); font-size: 16px; font-weight: 500; letter-spacing: -0.01em; }
+        .edu-school { font-size: 14px; color: var(--text-secondary); }
+        .edu-year { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); }
+        .contact-grid { display: flex; flex-wrap: wrap; gap: 32px; }
+        .contact-item { display: flex; flex-direction: column; gap: 4px; }
+        .contact-label {
+            font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--text-tertiary);
+        }
+        .contact-value { font-size: 15px; color: var(--text-primary); }
+        .contact-value a {
+            color: var(--text-primary); text-decoration: none;
+            border-bottom: 1px solid var(--border); transition: all var(--transition);
+        }
+        .contact-value a:hover { color: var(--accent); border-color: var(--accent); }
+        footer {
+            max-width: var(--max-w); margin: 0 auto; padding: 24px 24px 48px;
+            border-top: 1px solid var(--border-light); font-size: 12px; color: var(--text-tertiary);
+        }
+        .cert-tag {
+            display: inline-block; font-family: var(--font-mono); font-size: 11px;
+            padding: 3px 10px; background: var(--accent-light); color: var(--accent);
+            border-radius: 3px; margin-top: 12px;
+        }
+        .reveal {
+            opacity: 0; transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .stagger > * {
+            opacity: 0; transform: translateY(12px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
+        .stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
+        .stagger.visible > *:nth-child(3) { transition-delay: 0.15s; }
+        .stagger.visible > *:nth-child(4) { transition-delay: 0.2s; }
+        .stagger.visible > *:nth-child(5) { transition-delay: 0.25s; }
+        .stagger.visible > *:nth-child(6) { transition-delay: 0.3s; }
+        .stagger.visible > * { opacity: 1; transform: translateY(0); }
+        @media (max-width: 640px) {
+            .nav-links a:not(.theme-toggle):not(:last-child) { display: none; }
+            .hero h1 { font-size: 36px; }
+            .hero-layout { flex-direction: column-reverse; align-items: center; text-align: center; gap: 24px; }
+            .hero-meta { justify-content: center; }
+            .role-header { flex-direction: column; }
+            .hero-meta { flex-direction: column; gap: 8px; }
+            .contact-grid { flex-direction: column; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
 
-    <article class="resume-wrapper text-center position-relative">
-        <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
-            <header class="resume-header pt-4 pt-md-0">
-                <div class="media flex-column flex-md-row">
-                    <img class="mr-3 img-fluid picture mx-auto" src="assets/images/IMG_0036.jpg" alt="">
-                    <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
-                        <div class="primary-info">
-                            <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">Prithwiraj Das</h1>
-                            <div class="title mb-3">Lead Software Developer</div>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><a href="#"><i class="far fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>prithwiraj1991@gmail.com</a></li>
-                                <li><a href="#"><i class="fas fa-mobile-alt fa-fw mr-2" data-fa-transform="grow-6"></i>647 705 6210</a></li>
-                            </ul>
-                        </div><!--//primary-info-->
-                        <div class="secondary-info ml-md-auto mt-2">
-                            <ul class="resume-social list-unstyled">
-                                <li class="mb-3"><a href="https://www.linkedin.com/in/prithwirajdas/"><span class="fa-container text-center mr-2"><i class="fab fa-linkedin-in fa-fw"></i></span>linkedin.com/in/prithwirajdas/</a></li>
-                                <li class="mb-3"><a href="https://github.com/prithwiraj1991"><span class="fa-container text-center mr-2"><i class="fab fa-github-alt fa-fw"></i></span>https://github.com/prithwirajdas007</a></li>
-                                <!-- <li class="mb-3"><a href="#"><span class="fa-container text-center mr-2"><i class="fab fa-codepen fa-fw"></i></span>https://codepen.io/prithwiraj1991/</a></li> -->
-                                <!--<li><a href="#"><span class="fa-container text-center mr-2"><i class="fas fa-globe"></i></span>yourwebsite.com</a></li>-->
-                            </ul>
-                        </div><!--//secondary-info-->
-                    </div><!--//media-body-->
-                </div><!--//media-->
-            </header>
-            <div class="resume-body p-5">
-                <section class="resume-section summary-section mb-5">
-                    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Career Summary</h2>
-                    <div class="resume-section-content">
-                        <p class="mb-0">
-                            <ul style="list-style-type:disc;">
-                                <li>11+ years of success delivering scalable SaaS platforms and cloud-native architectures across high-impact domains.</li>
-                                <li>Proven leader of cross-functional teams, fostering a collaborative culture and driving end-to-end execution of complex projects.</li>
-                                <li>Proven track record of delivering FDA-certified solutions and modernizing systems with microservices, event-driven architecture, CI/CD pipelines, and containerized deployments.</li>
-                                <li>Spearheaded the GM MyRewards integration for Dealer-FX, securing exclusive vendor status across all GM dealerships in North America.</li>
-                                <li>Deep expertise in .NET (C#), Node.js, AWS (Lambda, SAM, EKS), Azure, PostgreSQL, and modern front-end frameworks like Angular.</li>
-                                <li>Recognized for balancing hands-on technical leadership with strategic execution to ensure performance, reliability, and growth.</li>
-                                <li>Experienced in recruiting, mentoring, and scaling engineering teams while driving delivery excellence across agile SDLC processes.</li>
-                                <li>Proficient in architecting and deploying cloud-native solutions using AWS and Azure with strong understanding of DevOps and CI/CD pipelines.</li>
-                                <li>Skilled in identifying business needs, designing innovative solutions, and leading projects from inception to successful delivery.</li>
-                            </ul>
-                        </p>
-                    </div>
-                </section><!--//summary-section-->
-
-                <div class="row">
-                    <div class="col-lg-9">
-                        <section class="resume-section experience-section mb-5">
-                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Work Experience</h2>
-                            <div class="resume-section-content">
-                                <div class="resume-timeline position-relative">
-                                    <article class="resume-timeline-item position-relative pb-5">
-                                        <div class="resume-timeline-item-header mb-2">
-                                            <div class="d-flex flex-column flex-md-row">
-                                                <h3 class="resume-position-title font-weight-bold mb-1">SOFTWARE DEVELOPMENT TEAM LEAD</h3>
-                                                <div class="resume-company-name ml-auto">Snap-On (Dealer-FX)</div>
-                                            </div><!--//row-->
-                                            <div class="resume-position-time">September 2024 - July 2025</div>
-                                        </div><!--//resume-timeline-item-header-->
-                                        <div class="resume-timeline-item-desc">
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Domain: Repair Order Management &amp; Service Experience</h4>
-                                            <p>Led two core product teams within Dealer-FX’s One Platform, a cloud-native SaaS for automotive dealerships, providing technical leadership across the Repair Order Management and Service Experience modules.</p>
-                                            <ul>
-                                                <li>Led Repair Order Management delivery, including vehicle history, DMS sync, and async service workflows across dealerships.</li>
-                                                <li>Drove GM MyRewards integration in Service Experience, enabling reward redemption and securing Dealer-FX as GM’s exclusive vendor in North America.</li>
-                                                <li>Implemented new APIs on AWS SAM-based Node.js services using Sequelize ORM for Purchase Order and Parts Inventory modules, supporting scalable backend growth and cleaner developer onboarding.</li>
-                                                <li>Delivered 8+ production releases with &lt;10% bug escape rate and 20% faster cycle times through stronger DevOps collaboration, QA coordination, and agile execution.</li>
-                                            </ul>
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Technologies used:</h4>
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">.NET Core 8</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">C#</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">AWS Lambda</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">AWS EC2</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">AWS EKS</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">AWS SAM</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Node.js</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Sequelize</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">PostgreSQL</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Redis</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Angular (16/17)</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">New Relic</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Kibana</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">GitHub Actions</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Docker</span></li>
-                                            </ul>
-                                        </div><!--//resume-timeline-item-desc-->
-                                    </article><!--//resume-timeline-item-->
-                                    <article class="resume-timeline-item position-relative pb-5">
-                                        <div class="resume-timeline-item-header mb-2">
-                                            <div class="d-flex flex-column flex-md-row">
-                                                <h3 class="resume-position-title font-weight-bold mb-1">TEAM LEAD SOFTWARE ENGINEER </h3>
-                                                <div class="resume-company-name ml-auto">EverCommerce (Service Fusion)</div>
-                                            </div><!--//row-->
-                                            <div class="resume-position-time">April 2023 - September 2024</div>
-                                        </div><!--//resume-timeline-item-header-->
-                                        <div class="resume-timeline-item-desc">
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Product: Service Fusion Platform</h4>
-                                            <p>Provide technical leadership in developing high-quality software design and architecture, including designing and implementing microservices using Ardalis Clean Architecture, while rewriting the Service Fusion SAAS Platform. Lead the development of software solutions by identifying, prioritizing, and executing tasks in the software development life cycle.</p>
-                                            <ul>
-                                                <li>Successfully delivered the 10DLC messaging compliance project on the new microservices platform under tight deadlines.</li>
-                                                <li>Built a data warehouse with AWS Lambda and Decodable, significantly improving reporting capabilities and data management within a two-month timeframe.</li>
-                                                <li>Coached and mentored teams regarding microservices, facilitating successful transition and updating the project template and AWS CodeArtifact in an efficient manner.</li>
-                                            </ul>
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Technologies used:</h4>
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">.NET Core 7</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">C#</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">MySql</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">AWS</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Ardalis Clean Architecture</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Bitbucket</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Docker</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">AWS CodeArtifact</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">xUnit</span></li>
-                                            </ul>
-                                        </div><!--//resume-timeline-item-desc-->
-                                    </article><!--//resume-timeline-item-->
-                                    <article class="resume-timeline-item position-relative pb-5">
-                                        <div class="resume-timeline-item-header mb-2">
-                                            <div class="d-flex flex-column flex-md-row">
-                                                <h3 class="resume-position-title font-weight-bold mb-1">SENIOR SOFTWARE ENGINEER </h3>
-                                                <div class="resume-company-name ml-auto">BeyondTrust</div>
-                                            </div><!--//row-->
-                                            <div class="resume-position-time">May 2022 - March 2023</div>
-                                        </div><!--//resume-timeline-item-header-->
-                                        <div class="resume-timeline-item-desc">
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Project: Endpoint Privilege Management (EPM) SaaS Platform</h4>
-                                            <p>Developed high-performance services and streamlined DevOps pipelines for BeyondTrust’s Endpoint Privilege Management product.</p>
-                                            <ul>
-                                                <li>Developed and deployed high-performance microservices for the EPM platform, transitioning a key product to a multi-tenant SaaS architecture and optimizing database performance (PostgreSQL, Elasticsearch).</li>
-                                                <li>Spearheaded the migration from Azure DevOps to GitHub, reducing deployment time by 30% through CI/CD pipeline optimizations with GitHub Actions, Docker, and Kubernetes.</li>
-                                            </ul>
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Technologies used:</h4>
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">.NET (Core 6 & 7)</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">C#</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">AWS</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Azure</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">PostgreSQL</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Elasticsearch</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">GitHub Actions</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Docker</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">K8S</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">JFrog</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">xUnit</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Moq</span></li>
-                                            </ul>
-                                        </div><!--//resume-timeline-item-desc-->
-                                    </article><!--//resume-timeline-item-->
-                                    <article class="resume-timeline-item position-relative pb-5">
-                                        <div class="resume-timeline-item-header mb-2">
-                                            <div class="d-flex flex-column flex-md-row">
-                                                <h3 class="resume-position-title font-weight-bold mb-1">SENIOR BACKEND ENGINEER </h3>
-                                                <div class="resume-company-name ml-auto">Paige AI (Velocity Global)</div>
-                                            </div><!--//row-->
-                                            <div class="resume-position-time">May 2021 - May 2022</div>
-                                        </div><!--//resume-timeline-item-header-->
-                                        <div class="resume-timeline-item-desc">
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Project/Team/Domain: Full Focus Viewer (FDA cleared medical device)</h4>
-                                            <p>Played a leadership role in the planning, design, and deployment of APIs on .NET Core and Python, utilizing PostgreSQL, MongoDB, and AWS S3. Orchestrated technical leadership as the lead backend developer for the FullFocus Viewer, an FDA-cleared medical device. Oversaw planning, design, creation, deployment, monitoring, and support of APIs within and across domains by liaising with the FullFocus Viewer frontend team. Contributed to new feature design and served as a key resource for application integration within the team by engaging in cross-functional collaboration with other teams.</p>
-                                            <ul>
-                                                <li>Led the implementation of additional Micro-services in Python (Flask) for adding New Capabilities to the product and auditing purposes as required for the FDA certification process.</li>
-                                                <li>Displayed a high level of technical competence in re-write and upgrade of the FullFocus Viewer Backend to .NET 6 in a microservice architecture, introducing new APIs to support product integration and expanding product features.</li>
-                                                <li>Introduced support and Admin APIs for Paige`s support and onboarding teams to scale up support timeline and onboarding time.</li>
-                                                <li>Performed a key role in achieving FDA certification of Full Focus Viewer as a Certified Medical device and the only Digital AI pathology FDA-cleared device.</li>
-                                            </ul>
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Technologies used:</h4>
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">NET (Core 5,6 and Framework)</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">C#</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Python</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">AWS</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Web API</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Mongo db</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">K8S</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">DataDog</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Octopus Deploy</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Docker</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">GitLab (Gitlab CI)</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">JFrog</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Redis</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Microservice</span></li>
-                                            </ul>
-                                        </div><!--//resume-timeline-item-desc-->
-                                    </article><!--//resume-timeline-item-->
-                                    <article class="resume-timeline-item position-relative pb-5">
-                                        <div class="resume-timeline-item-header mb-2">
-                                            <div class="d-flex flex-column flex-md-row">
-                                                <h3 class="resume-position-title font-weight-bold mb-1">SENIOR SOFTWARE ENGINEER </h3>
-                                                <div class="resume-company-name ml-auto">Affirm (PayBright)</div>
-                                            </div><!--//row-->
-                                            <div class="resume-position-time">August 2019 - May 2021</div>
-                                        </div><!--//resume-timeline-item-header-->
-                                        <div class="resume-timeline-item-desc">
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Project: PayBright (Core Loan systems)</h4>
-                                            <p>Led the Core Loan Systems team to modernize loan processing and data analytics at PayBright (acquired by Affirm).</p>
-                                            <ul>
-                                                <li>Led the Core Loan Systems team, driving high-performance standards and ensuring the successful delivery of critical projects.</li>
-                                                <li>Rewrote core loan systems into .NET Core microservices, significantly improving scalability, performance, and maintainability.</li>
-                                                <li>Devised backend development strategies, including introducing structured repositories, Dockerized environments, and Redgate SQL for optimized database management.</li>
-                                                <li>Enhanced scalability, reliability, and deployment efficiency by introducing containerization with Docker and automating deployment pipelines using GitHub Actions, Redgate SQL CI/CD, and Azure DevOps.</li>
-                                                <li>Led the design and development of robust ETL/ELT workflows using Python, Azure Data Factory, and Node.js, enabling seamless data warehouse operations.</li>
-                                                <li>Enabled data-driven decision-making by creating BI reports, dashboards, and KPIs on the Looker platform for stakeholders.</li>
-                                            </ul>
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Technologies used:</h4>
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">.Net Core</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Microservice</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">C#</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">T-SQL</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Web API</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">MongoDB</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">MVC 5</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">React JS</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">RedGate SQL</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Node.js</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">GitHub</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Docker</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">xUnit</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Azure AD</span></li>
-                                            </ul>
-                                        </div><!--//resume-timeline-item-desc-->
-                                    </article><!--//resume-timeline-item-->
-                                    <article class="resume-timeline-item position-relative pb-5">
-                                        <div class="resume-timeline-item-header mb-2">
-                                            <div class="d-flex flex-column flex-md-row">
-                                                <h3 class="resume-position-title font-weight-bold mb-1">Dynamics CRM/.Net Developer</h3>
-                                                <div class="resume-company-name ml-auto">Cineplex Entertainment</div>
-                                            </div><!--//row-->
-                                            <div class="resume-position-time">November 2018 - August 2019</div>
-                                        </div><!--//resume-timeline-item-header-->
-                                        <div class="resume-timeline-item-desc">
-                                            <p>
-                                                <strong>https://corporateorders.cineplex.com/, https://giftcards.therecroom.com/, https://giftcards.cineplex.com/</strong>
-                                            </p>
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Project: Corporate Fulfilment (CRM and Application)</h4>
-                                            <p>Corporate Fulfillment department is responsible for the Cineplex Gift Card and certificates sales and distribution to regular and corporate clients. The application is for clients to place the order and the CRM is for the Corporate Fulfilment department to manage and fulfill those orders.</p>
-                                            <ul>
-                                                <li>Responsible for adding new feature to the application frontend, service layer and CRM</li>
-                                                <li>Front end application is on Agility CMS framework, Service layer is WCF application and CRM is MS CRM Dynamics 2016 on-premise</li>
-                                                <li>Responsibilities also include creating task according to user stories and allocating time against them</li>
-                                                <li>Create, update and maintain Views, and Stored Procedures, windows services and scheduled tasks</li>
-                                            </ul>
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Technologies used:</h4>
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">.NET</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Dynamics CRM 2016 and 365</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">C#</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">SQL Server 2016</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Agility CMS</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Knockout JS</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">T-SQL</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">JavaScript</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">XRM framework</span></li>
-                                            </ul>
-                                        </div><!--//resume-timeline-item-desc-->
-                                    </article><!--//resume-timeline-item-->
-                                    <article class="resume-timeline-item position-relative pb-5">
-                                        <div class="resume-timeline-item-header mb-2">
-                                            <div class="d-flex flex-column flex-md-row">
-                                                <h3 class="resume-position-title font-weight-bold mb-1">SENIOR SOFTWARE DEVELOPER</h3>
-                                                <div class="resume-company-name ml-auto">Fleet Complete</div>
-                                            </div><!--//row-->
-                                            <div class="resume-position-time">November 2017 - November 2018</div>
-                                        </div><!--//resume-timeline-item-header-->
-                                        <div class="resume-timeline-item-desc">
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Client: Planete Courier; Project: Courier Complete (Contract)</h4>
-                                            <p>Courier Complete (CC) is a courier service and delivery software. Planete Courier runs its business on Courier Complete. They are also one of the biggest clients of Fleet Complete.</p>
-                                            <p>Represented Fleet Complete on an AT&T IoT Civic Hackathon Indianapolis and also a key member of the development team. - https://att.fleetcomplete.com/blogs/firstsense-app-a-fleet-complete-brainchild-at-att-iot-civic-hackathon/</p>
-                                            <ul>
-                                                <li>Dedicated developer to Planete Courier for Courier Complete (CC) Upgrade.</li>
-                                                <li>CC Application, a desktop application (VB6), is being upgraded to a web application using REST API and Angular 6.</li>
-                                                <li>CC Web, the customer-facing site for placing and tracking order, ASP.Net web application, is being upgraded to MVC5 application using Entity framework.</li>
-                                                <li>Create, update and maintain Views, Stored Procedures, and Trigger.</li>
-                                            </ul>
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Technologies used:</h4>
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">.NET</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">C#</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">T-SQL</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">SQL Server</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">DevExtrema</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">Angular 6</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">.Net Core</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">WebAPI 2</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">MVC 5</span></li>
-                                            </ul>
-                                        </div><!--//resume-timeline-item-desc-->
-                                    </article><!--//resume-timeline-item-->
-                                    <article class="resume-timeline-item position-relative pb-5">
-                                        <div class="resume-timeline-item-header mb-2">
-                                            <div class="d-flex flex-column flex-md-row">
-                                                <h3 class="resume-position-title font-weight-bold mb-1">SENIOR SOFTWARE DEVELOPER </h3>
-                                                <div class="resume-company-name ml-auto">Condo Control Central</div>
-                                            </div><!--//row-->
-                                            <div class="resume-position-time">May 2017 - November 2017</div>
-                                        </div><!--//resume-timeline-item-header-->
-                                        <div class="resume-timeline-item-desc">
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Project: Condo Control Central Web Application (Contract)</h4>
-                                            <p>Condo Control Central is a property management software company. The web application is the customer-facing web site used by Property managers, security and property owners. The site is an MVC application, there is also a web API, an admin application, a mobile application, and some background services</p>
-                                            <ul>
-                                                <li>Developed and implemented new features, fixed bugs, and enhanced existing functionality.</li>
-                                                <li>Participated in code and functional specification reviews and new product initiative discussions.</li>
-                                                <li>Upgrades technology and look and feel of parts of the platform.</li>
-                                                <li>Create a Status Certificate portal for ordering Status certificate for Condo Units</li>
-                                            </ul>
-                                            <h4 class="resume-timeline-item-desc-heading font-weight-bold">Technologies used:</h4>
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">.NET</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">C#</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">SQL Server 2016</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">DevExpess</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">MVC 3</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">T-SQL</span></li>
-                                                <li class="list-inline-item"><span class="badge badge-primary badge-pill">JavaScript</span></li>
-                                            </ul>
-                                        </div><!--//resume-timeline-item-desc-->
-                                    </article><!--//resume-timeline-item-->
-                                </div><!--//resume-timeline-->
-                            </div>
-                        </section><!--//experience-section-->
-                    </div>
-                    <div class="col-lg-3">
-                        <section class="resume-section skills-section mb-5">
-                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Skills &amp; Tools</h2>
-                            <div class="resume-section-content">
-                                <div class="resume-skill-item">
-                                    <!-- <h4 class="resume-skills-cat font-weight-bold">Frontend</h4> -->
-                                    <ul class="list-unstyled mb-4">
-                                        <li class="mb-2">
-                                            <div class="resume-skill-name">C#</div>
-                                            <div class="progress resume-progress">
-                                                <div class="progress-bar theme-progress-bar-dark" role="progressbar" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </li>
-                                        <li class="mb-2">
-                                            <div class="resume-skill-name">SQL/T-SQL</div>
-                                            <div class="progress resume-progress">
-                                                <div class="progress-bar theme-progress-bar-dark" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </li>
-                                        <li class="mb-2">
-                                            <div class="resume-skill-name">.Net/.Net Core</div>
-                                            <div class="progress resume-progress">
-                                                <div class="progress-bar theme-progress-bar-dark" role="progressbar" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </li>
-                                        <li class="mb-2">
-                                            <div class="resume-skill-name"> API/Microservices</div>
-                                            <div class="progress resume-progress">
-                                                <div class="progress-bar theme-progress-bar-dark" role="progressbar" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </li>
-                                        <li class="mb-2">
-                                            <div class="resume-skill-name">Python</div>
-                                            <div class="progress resume-progress">
-                                                <div class="progress-bar theme-progress-bar-dark" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2">
-                                            <div class="resume-skill-name">Architecture/Team leadership</div>
-                                            <div class="progress resume-progress">
-                                                <div class="progress-bar theme-progress-bar-dark" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </li>
-                                        <li class="mb-2">
-                                            <div class="resume-skill-name">Code Review/Deployment</div>
-                                            <div class="progress resume-progress">
-                                                <div class="progress-bar theme-progress-bar-dark" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </li>
-                                        <li class="mb-2">
-                                            <div class="resume-skill-name">AWS/Azure</div>
-                                            <div class="progress resume-progress">
-                                                <div class="progress-bar theme-progress-bar-dark" role="progressbar" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div><!--//resume-skill-item-->
-
-                                <div class="resume-skill-item">
-                                    <h4 class="resume-skills-cat font-weight-bold">Others</h4>
-                                    <ul class="list-inline">
-                                        <!-- <li class="list-inline-item"><span class="badge badge-light">DevOps</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Code Review</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Git</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Unit Testing</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Wireframing</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Sketch</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Balsamiq</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">WordPress</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Shopify</span></li>
-                                        -->
-                                        <li class="list-inline-item"><span class="badge badge-light">C#</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">T-SQL</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Web API</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">.Net Core</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Azure</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">AzureDevOps</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">GitHub Actions</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Docker</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">AWS</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">AWS Lambda</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">AWS SAM</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">RabbitMQ</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Redis</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">SignalR</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">New Relic</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">CI/CD</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Code Review</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Solutioning</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">JSON/XML</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">JavaScript</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">JQuery</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Ajax</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Html</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">CSS (BOOTSTRAP)</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">VB.Net</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Angular (16/17)</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Node.js</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">React JS</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">ADO.NET/Entity Framework</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Mongo DB</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">PostgreSQL</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">MVC 5</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">SPA</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Web Services</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">REST/SOAP</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">SAAS</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">PowerShell</span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light"> Dot Net Nuke CMS </span></li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Umbraco CMS </span> </li>
-                                        <li class="list-inline-item"><span class="badge badge-light">Dynamics CRM</span></li>
-                                    </ul>
-                                </div><!--//resume-skill-item-->
-                            </div><!--resume-section-content-->
-                        </section><!--//skills-section-->
-                        <section class="resume-section education-section mb-5">
-                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Education</h2>
-                            <div class="resume-section-content">
-                                <ul class="list-unstyled">
-                                    <li class="mb-2">
-                                        <div class="resume-degree font-weight-bold">Information Technology Solutions, Graduate Certificate </div>
-                                        <div class="resume-degree-org">Humber Institute of Technology and Advanced Learning, Toronto, ON, Canada</div>
-                                        <div class="resume-degree-time">2012 - 2014</div>
-                                    </li>
-                                    <li>
-                                        <div class="resume-degree font-weight-bold">Bachelor of Technology in Electrical Engineering</div>
-                                        <div class="resume-degree-org">West Bengal University of Technology, India</div>
-                                        <div class="resume-degree-time">2009 - 2012 </div>
-                                    </li>
-                                    <li>
-                                        <div class="resume-degree font-weight-bold">Diploma in Electrical Engineering</div>
-                                        <div class="resume-degree-org">West Bengal State Council of Technical Education, India</div>
-                                        <div class="resume-degree-time">2006 - 2009</div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </section><!--//education-section-->
-                        <section class="resume-section reference-section mb-5">
-                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">ACHIEVEMENTS AND AWARDS</h2>
-                            <div class="resume-section-content">
-                                <ul class="list-unstyled resume-awards-list">
-                                    <li class="mb-2 pl-4 position-relative">
-                                        <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
-                                        <div class="resume-award-desc">Achieved FDA certification for Full Focus Viewer, a cloud-deployed AI pathology tool on AWS.</div>
-                                    </li>
-                                    <li class="mb-2 pl-4 position-relative">
-                                        <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
-                                        <div class="resume-award-desc">Led the GM MyRewards integration at Dealer-FX, securing exclusive vendor status for all GM dealerships in North America.</div>
-                                    </li>
-                                    <li class="mb-2 pl-4 position-relative">
-                                        <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
-                                        <div class="resume-award-desc">Represented Fleet Complete on an AT&amp;T IoT Civic Hackathon Indianapolis and also a key member of the development team.</div>
-                                    </li>
-                                    <li class="mb-2 pl-4 position-relative">
-                                        <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
-                                        <div class="resume-award-desc">Delivered a USD 3.0 million project for City of Ottawa in 2016, got appreciated and promoted.</div>
-                                    </li>
-                                    <li class="mb-2 pl-4 position-relative">
-                                        <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
-                                        <div class="resume-award-desc">Presented a marketing software at a showcase event at CBC news, representing the Department of Media Studies, Humber College and AMA Inc. The product was bought by Shopper’s Drugmart and two other companies.</div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </section><!--//interests-section-->
-                        <section class="resume-section language-section mb-5">
-                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Language</h2>
-                            <div class="resume-section-content">
-                                <ul class="list-unstyled resume-lang-list">
-                                    <li class="mb-2"><span class="resume-lang-name font-weight-bold">Bengali</span> <small class="text-muted font-weight-normal">(Native)</small></li>
-                                    <li class="mb-2 align-middle"><span class="resume-lang-name font-weight-bold">English</span> <small class="text-muted font-weight-normal">(Professional)</small></li>
-                                    <li><span class="resume-lang-name font-weight-bold">Hindi</span> <small class="text-muted font-weight-normal">(Professional)</small></li>
-                                </ul>
-                            </div>
-                        </section><!--//language-section-->
-                        <section class="resume-section interests-section mb-5">
-                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Interests</h2>
-                            <div class="resume-section-content">
-                                <ul class="list-unstyled">
-                                    <li class="mb-1">Photography</li>
-                                    <li class="mb-1">Badminton</li>
-                                    <li class="mb-1">Traveling</li>
-                                </ul>
-                            </div>
-                        </section><!--//interests-section-->
-                    </div>
-                </div><!--//row-->
-            </div><!--//resume-body-->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-name">Prithwiraj Das</a>
+        <div class="nav-links">
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">&#9788;</button>
         </div>
-    </article>
+    </div>
+</nav>
 
-    <footer class="footer text-center pt-2 pb-5">
-        <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->
-        <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
-    </footer>
+<section class="hero">
+    <div class="hero-layout">
+        <div class="hero-text">
+            <span class="hero-overline reveal">Lead Backend / Platform Engineer</span>
+            <h1 class="reveal">Building <em>distributed systems</em> for fintech &amp; capital markets</h1>
+            <p class="hero-summary reveal">
+                12+ years building cloud-native, transaction-heavy SaaS systems. I specialize in scalable backend architectures using .NET/C#, event-driven and messaging-based patterns, and modernizing platforms where financial accuracy and system resilience are non-negotiable &#8212; and I'm comfortable contributing across the stack when delivery demands it.
+            </p>
+            <div class="hero-meta reveal">
+                <span>Greater Toronto Area, Canada</span>
+                <span><a href="mailto:prithwirajdas07@gmail.com">prithwirajdas07@gmail.com</a></span>
+                <span><a href="https://linkedin.com/in/prithwirajdas" target="_blank" rel="noopener">LinkedIn</a></span>
+                <span><a href="https://github.com/prithwirajdas07" target="_blank" rel="noopener">GitHub</a></span>
+            </div>
+        </div>
+        <div class="hero-photo reveal">
+            <!-- REPLACE: swap the placeholder below with your photo -->
+            <img src="assets/images/profile.jpg" alt="Prithwiraj Das">
+            <span class="hero-photo-placeholder">Your<br>photo<br>here</span>
+        </div>
+    </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="experience" id="experience">
+    <span class="section-label reveal">Experience</span>
+    <h2 class="section-title reveal">Where I've built things</h2>
+
+    <div class="role reveal">
+        <div class="role-header">
+            <span class="role-title">Lead Software Engineer</span>
+            <span class="role-date">Oct 2025 &#8211; Present</span>
+        </div>
+        <div class="role-company">Derivative Path &#8212; Walnut Creek, CA (Remote)</div>
+        <p class="role-intro">Working on DerivativeEDGE, a cloud-native SaaS trading and risk management platform serving banks and financial institutions for FX hedging and derivatives operations.</p>
+        <ul class="role-bullets">
+            <li>Implemented distributed tracing (OpenTelemetry) across a multi-service pricing pipeline, identifying the primary latency bottleneck (~300s) and giving leadership actionable data to prioritize optimization.</li>
+            <li>Resolved a critical multi-tenant data isolation defect involving token caching and threading issues, eliminating a compliance risk for regulated financial clients.</li>
+            <li>Designed real-time status notification architecture using event sourcing (Marten) and messaging patterns (Rebus), replacing blind polling with live visibility for risk analysts.</li>
+        </ul>
+        <div class="role-tech">
+            <span>.NET 8</span><span>C#</span><span>Blazor Server</span><span>SignalR</span><span>Marten</span><span>Rebus</span><span>FastEndpoints</span><span>PostgreSQL</span><span>RabbitMQ</span><span>AWS</span><span>OpenTelemetry</span><span>Docker</span>
+        </div>
+    </div>
+
+    <div class="role reveal">
+        <div class="role-header">
+            <span class="role-title">Software Development Team Lead</span>
+            <span class="role-date">Sep 2024 &#8211; Sep 2025</span>
+        </div>
+        <div class="role-company">Snap-On (Dealer-FX) &#8212; Toronto, ON</div>
+        <p class="role-intro">Led two core product teams within Snap-On's Dealer-FX One Platform, a cloud-native SaaS suite serving major automotive OEMs and dealerships across North America.</p>
+        <ul class="role-bullets">
+            <li>Led the GM My Rewards integration, managing both the core team and additional contractors &#8212; securing Dealer-FX as GM's preferred vendor across North America.</li>
+            <li>Built and deployed new APIs using AWS SAM-based Node.js services with Sequelize ORM for Purchase Order and Parts Inventory modules.</li>
+            <li>Managed a team of 4 developers and 2 QA engineers, improving delivery speed by ~20% through better sprint execution and DevOps collaboration.</li>
+        </ul>
+        <div class="role-tech">
+            <span>.NET Core 8</span><span>Node.js</span><span>Sequelize</span><span>AWS Lambda</span><span>AWS SAM</span><span>PostgreSQL</span><span>Redis</span><span>Angular 16/17</span><span>GitHub Actions</span><span>Docker</span>
+        </div>
+    </div>
+
+    <div class="role reveal">
+        <div class="role-header">
+            <span class="role-title">Software Engineering Team Lead</span>
+            <span class="role-date">Apr 2023 &#8211; Sep 2024</span>
+        </div>
+        <div class="role-company">EverCommerce (Service Fusion) &#8212; Toronto, ON</div>
+        <p class="role-intro">Technical and team leadership for the Service Fusion SaaS platform rewrite using Ardalis Clean Architecture, managing a team of 4 developers.</p>
+        <ul class="role-bullets">
+            <li>Delivered 10DLC messaging compliance transformation &#8212; one of the first full features shipped on the rewritten microservices architecture.</li>
+            <li>Supported the data warehouse initiative via Decodable and AWS Lambda, then led the team in delivering the reporting microservice to early adopters within 2 months.</li>
+        </ul>
+        <div class="role-tech">
+            <span>.NET Core 7</span><span>C#</span><span>MySQL</span><span>AWS</span><span>Ardalis Clean Architecture</span><span>Decodable</span><span>Docker</span><span>xUnit</span>
+        </div>
+    </div>
+
+    <div class="role reveal">
+        <div class="role-header">
+            <span class="role-title">Senior Software Engineer</span>
+            <span class="role-date">May 2022 &#8211; Apr 2023</span>
+        </div>
+        <div class="role-company">BeyondTrust &#8212; Halifax, NS (Remote)</div>
+        <p class="role-intro">Contributed to the Endpoint Privilege Management (EPM) product suite, bringing microservices experience as the department transitioned to cloud-native architecture.</p>
+        <ul class="role-bullets">
+            <li>Delivered key microservices for the EPM platform and contributed to migrating a legacy product to a multi-tenant SaaS model.</li>
+            <li>Stepped up to support the DevOps team in migrating from Azure DevOps to GitHub, working across Terraform and Kubernetes to redesign CI/CD pipelines.</li>
+        </ul>
+        <div class="role-tech">
+            <span>.NET Core 6/7</span><span>PostgreSQL</span><span>Elasticsearch</span><span>AWS</span><span>Azure</span><span>GitHub Actions</span><span>Docker</span><span>Kubernetes</span>
+        </div>
+    </div>
+
+    <div class="role reveal">
+        <div class="role-header">
+            <span class="role-title">Senior/Lead Backend Developer</span>
+            <span class="role-date">May 2021 &#8211; May 2022</span>
+        </div>
+        <div class="role-company">Paige AI (via Velocity Global) &#8212; Toronto, ON &#183; Contract</div>
+        <p class="role-intro">Led backend development for the FullFocus Viewer, an FDA-cleared digital AI pathology device.</p>
+        <ul class="role-bullets">
+            <li>Led the rewrite of the FullFocus Viewer backend to .NET 6 in a microservice architecture.</li>
+            <li>Implemented Python (Flask) microservices for audit trails required for FDA certification.</li>
+            <li>Played a key role in achieving FDA certification &#8212; the first FDA-cleared AI-powered digital pathology platform for primary diagnosis.</li>
+        </ul>
+        <div class="role-tech">
+            <span>.NET Core 5/6</span><span>Python</span><span>AWS</span><span>PostgreSQL</span><span>MongoDB</span><span>Redis</span><span>Kubernetes</span><span>DataDog</span><span>GitLab CI</span>
+        </div>
+    </div>
+
+    <div class="role reveal">
+        <div class="role-header">
+            <span class="role-title">Senior/Lead Software Engineer</span>
+            <span class="role-date">Aug 2019 &#8211; May 2021</span>
+        </div>
+        <div class="role-company">Affirm (PayBright) &#8212; Toronto, ON</div>
+        <p class="role-intro">Led the Core Loan Systems team at PayBright (acquired by Affirm), driving modernization of loan processing infrastructure and data analytics.</p>
+        <ul class="role-bullets">
+            <li>Rewrote core loan systems into .NET Core microservices, improving scalability and maintainability.</li>
+            <li>Led ETL/ELT workflows using Python, Azure Data Factory, and Node.js for data warehouse operations.</li>
+            <li>Built BI reports, dashboards, and KPIs on the Looker platform for stakeholders.</li>
+        </ul>
+        <div class="role-tech">
+            <span>.NET Core</span><span>C#</span><span>MS SQL</span><span>MongoDB</span><span>Node.js</span><span>Python</span><span>Azure Data Factory</span><span>Redgate SQL</span><span>Docker</span><span>Looker</span>
+        </div>
+    </div>
+
+    <div class="older-roles" id="older-roles">
+        <div class="role">
+            <div class="role-header">
+                <span class="role-title">Dynamics CRM/.NET Developer</span>
+                <span class="role-date">Nov 2018 &#8211; Aug 2019</span>
+            </div>
+            <div class="role-company">Cineplex Entertainment &#8212; Toronto, ON</div>
+            <p class="role-intro">Built features for the Corporate Fulfillment platform &#8212; CRM and web application for Cineplex gift card sales and distribution.</p>
+            <div class="role-tech"><span>.NET</span><span>Dynamics CRM 2016</span><span>C#</span><span>SQL Server</span><span>Agility CMS</span><span>WCF</span></div>
+        </div>
+        <div class="role">
+            <div class="role-header">
+                <span class="role-title">Senior Software Developer</span>
+                <span class="role-date">Nov 2017 &#8211; Nov 2018</span>
+            </div>
+            <div class="role-company">Fleet Complete &#8212; Toronto, ON &#183; Contract</div>
+            <p class="role-intro">Modernized Courier Complete from VB6 desktop to web using REST APIs and Angular 6. Represented Fleet Complete at the AT&amp;T IoT Civic Hackathon.</p>
+            <div class="role-tech"><span>.NET</span><span>Angular 6</span><span>.NET Core</span><span>Web API 2</span><span>MVC 5</span><span>SQL Server</span></div>
+        </div>
+        <div class="role">
+            <div class="role-header">
+                <span class="role-title">Senior Software Developer</span>
+                <span class="role-date">Jun 2017 &#8211; Nov 2017</span>
+            </div>
+            <div class="role-company">Condo Control Central &#8212; Toronto, ON &#183; Contract</div>
+            <p class="role-intro">Developed features for the property management SaaS platform. Built a Status Certificate portal for condo unit owners.</p>
+            <div class="role-tech"><span>.NET</span><span>C#</span><span>MVC 3</span><span>SQL Server</span><span>DevExpress</span></div>
+        </div>
+        <div class="role">
+            <div class="role-header">
+                <span class="role-title">Software Developer</span>
+                <span class="role-date">May 2015 &#8211; Jun 2017</span>
+            </div>
+            <div class="role-company">Advanced Utility Systems &#8212; Toronto, ON</div>
+            <p class="role-intro">Key member of the CIS Infinity billing platform team. Led the Infinity.Link V4 portal rewrite on DotNetNuke. AODA compliance work enabled City of Ottawa to sign a $3M contract &#8212; the company's largest acquisition in 2016.</p>
+            <div class="role-tech"><span>.NET</span><span>DotNetNuke</span><span>SQL Server</span><span>Bootstrap 3</span><span>REST API</span><span>WCAG 2.0</span></div>
+        </div>
+        <div class="role">
+            <div class="role-header">
+                <span class="role-title">IT Consultant</span>
+                <span class="role-date">Jul 2014 &#8211; Apr 2015</span>
+            </div>
+            <div class="role-company">Dapasoft Inc &#8212; Toronto, ON</div>
+            <p class="role-intro">Delivered .NET web applications, Dynamics CRM integrations, and data migration solutions across client projects including OFIFC, Bell Fund (Bell Canada), and DATIS.</p>
+            <div class="role-tech"><span>.NET</span><span>Dynamics CRM 2013</span><span>SQL Server</span><span>Telerik UI</span><span>XRM Framework</span></div>
+        </div>
+        <div class="role">
+            <div class="role-header">
+                <span class="role-title">Software Developer (Internship)</span>
+                <span class="role-date">Nov 2013 &#8211; Apr 2014</span>
+            </div>
+            <div class="role-company">AMA Inc &#8212; Mississauga, ON</div>
+            <p class="role-intro">Built a Wi-Fi marketing portal for retail locations. Presented at a CBC News showcase event, resulting in 3 client sign-ups including Shoppers Drug Mart.</p>
+            <div class="role-tech"><span>.NET</span><span>C#</span><span>PHP</span><span>Linux</span></div>
+        </div>
+    </div>
+    <button class="show-more-btn" onclick="toggleOlderRoles(this)">Show earlier roles (2013&#8211;2019)</button>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="skills" id="skills">
+    <span class="section-label reveal">Technical skills</span>
+    <h2 class="section-title reveal">What I work with</h2>
+    <div class="skills-grid stagger">
+        <div class="skill-card">
+            <div class="skill-card-title">Languages &amp; Frameworks</div>
+            <div class="skill-card-items">C#, .NET 8, ASP.NET, Blazor Server, Python, Node.js, SQL (PostgreSQL, MS SQL, MySQL), Angular, SignalR</div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-card-title">Cloud &amp; Infrastructure</div>
+            <div class="skill-card-items">AWS (Lambda, S3, EC2, EKS, SAM), Azure, Docker, Kubernetes, Terraform</div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-card-title">Architecture &amp; Patterns</div>
+            <div class="skill-card-items">Microservices, Event Sourcing (Marten), CQRS, Clean Architecture, Event-Driven Design, OpenTelemetry</div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-card-title">Messaging &amp; Data</div>
+            <div class="skill-card-items">RabbitMQ, Rebus, Redis, PostgreSQL, MongoDB, FastEndpoints, ETL/ELT</div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-card-title">DevOps &amp; CI/CD</div>
+            <div class="skill-card-items">GitHub Actions, GitLab CI, Bitbucket Pipelines, Redgate SQL, Docker, Kubernetes</div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-card-title">Leadership</div>
+            <div class="skill-card-items">Team leadership (4&#8211;6 engineers), architecture ownership, code review, sprint execution, cross-functional delivery, mentoring</div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="projects" id="projects">
+    <span class="section-label reveal">Projects &amp; open source</span>
+    <h2 class="section-title reveal">Side work &amp; explorations</h2>
+    <div class="project-grid stagger">
+        <div class="project-card">
+            <div class="project-card-label">Showcase</div>
+            <div class="project-card-title">ServiceTrackr</div>
+            <div class="project-card-desc">.NET 9 Web API with clean layered architecture, JWT auth with refresh tokens, PostgreSQL + EF Core, Redis caching (read-through + invalidation), Docker-ready. Roadmap includes SignalR, Hangfire, Polly, and OpenTelemetry.</div>
+            <a href="https://github.com/prithwirajdas07/ServiceTrackr" target="_blank" rel="noopener" class="project-card-link">View on GitHub &#8594;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-label">Showcase</div>
+            <div class="project-card-title">SecureAPIContainer</div>
+            <div class="project-card-desc">Containerized .NET API with security best practices &#8212; authentication, authorization, and secure deployment patterns.</div>
+            <a href="https://github.com/prithwirajdas07/SecureAPIContainer" target="_blank" rel="noopener" class="project-card-link">View on GitHub &#8594;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-label">CI/CD Demo</div>
+            <div class="project-card-title">.NET 6 + GitHub Actions</div>
+            <div class="project-card-desc">.NET 6 project demonstrating automated build, test, and deployment pipelines using GitHub Actions.</div>
+            <a href="https://github.com/prithwirajdas07/PrithwiDotNet6WithGithubActions" target="_blank" rel="noopener" class="project-card-link">View on GitHub &#8594;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-label">In progress</div>
+            <div class="project-card-title">WorkerSagaDemo</div>
+            <div class="project-card-desc">Saga orchestration patterns with .NET workers, Rebus, and agentic workflows.</div>
+            <a href="https://github.com/prithwirajdas07" target="_blank" rel="noopener" class="project-card-link">View on GitHub &#8594;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-label">Planned</div>
+            <div class="project-card-title">AI/.NET Hybrid Showcase</div>
+            <div class="project-card-desc">Semantic Kernel + AWS Bedrock integration, demonstrating RAG patterns with .NET backend.</div>
+            <a href="https://github.com/prithwirajdas07" target="_blank" rel="noopener" class="project-card-link">Coming soon &#8594;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-label">Personal</div>
+            <div class="project-card-title">Music Library Manager</div>
+            <div class="project-card-desc">Python scripts for organizing and cleaning a 14,000-file (84GB) personal music library.</div>
+            <a href="https://github.com/prithwirajdas07" target="_blank" rel="noopener" class="project-card-link">View on GitHub &#8594;</a>
+        </div>
+    </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="writing" id="writing">
+    <span class="section-label reveal">Writing</span>
+    <h2 class="section-title reveal">Technical articles</h2>
+    <div class="writing-placeholder reveal">
+        <p>Technical writing on distributed systems, .NET architecture, and event sourcing &#8212; coming soon on Medium.</p>
+    </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="achievements" id="achievements">
+    <span class="section-label reveal">Highlights</span>
+    <h2 class="section-title reveal">Notable achievements</h2>
+    <ul class="achievement-list stagger">
+        <li>Achieved FDA certification for FullFocus Viewer &#8212; the first FDA-cleared AI-powered digital pathology platform for primary diagnosis.</li>
+        <li>Led the GM MyRewards integration at Snap-On (Dealer-FX), securing preferred vendor status across all GM dealerships in North America.</li>
+        <li>Represented Fleet Complete at the AT&amp;T IoT Civic Hackathon in Indianapolis.</li>
+        <li>Delivered a $3M project for City of Ottawa in 2016, leading to promotion.</li>
+        <li>Presented a marketing product at a CBC News showcase; purchased by Shoppers Drug Mart and two other companies.</li>
+    </ul>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="education" id="education">
+    <span class="section-label reveal">Education &amp; certifications</span>
+    <h2 class="section-title reveal">Academic background</h2>
+    <div class="edu-grid stagger">
+        <div class="edu-item">
+            <div>
+                <div class="edu-degree">Post Graduate Diploma, Information Technology</div>
+                <div class="edu-school">Humber Institute of Technology and Advanced Learning, Toronto</div>
+            </div>
+            <div class="edu-year">2012 &#8211; 2014</div>
+        </div>
+        <div class="edu-item">
+            <div>
+                <div class="edu-degree">B.Tech, Electrical Engineering</div>
+                <div class="edu-school">West Bengal University of Technology, India</div>
+            </div>
+            <div class="edu-year">2009 &#8211; 2012</div>
+        </div>
+        <div class="edu-item">
+            <div>
+                <div class="edu-degree">Diploma in Electrical Engineering</div>
+                <div class="edu-school">Ramakrishna Mission Shilpapitha College / WBSCTE, India</div>
+            </div>
+            <div class="edu-year">2006 &#8211; 2009</div>
+        </div>
+    </div>
+    <div class="cert-tag">Microsoft Certified: Azure Fundamentals (2020)</div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="contact" id="contact">
+    <span class="section-label reveal">Get in touch</span>
+    <h2 class="section-title reveal">Let's connect</h2>
+    <div class="contact-grid stagger">
+        <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <span class="contact-value"><a href="mailto:prithwirajdas07@gmail.com">prithwirajdas07@gmail.com</a></span>
+        </div>
+        <div class="contact-item">
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">+1 (647) 705-6210</span>
+        </div>
+        <div class="contact-item">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value"><a href="https://linkedin.com/in/prithwirajdas" target="_blank" rel="noopener">linkedin.com/in/prithwirajdas</a></span>
+        </div>
+        <div class="contact-item">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value"><a href="https://github.com/prithwirajdas07" target="_blank" rel="noopener">github.com/prithwirajdas07</a></span>
+        </div>
+        <div class="contact-item">
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Greater Toronto Area, Canada</span>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&#169; 2026 Prithwiraj Das</p>
+</footer>
+
+<script>
+function toggleTheme(){var h=document.documentElement,c=h.getAttribute('data-theme'),n=c==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);document.querySelector('.theme-toggle').innerHTML=n==='dark'?'&#9790;':'&#9788;'}
+(function(){var s=localStorage.getItem('theme');if(s){document.documentElement.setAttribute('data-theme',s);if(s==='dark')document.querySelector('.theme-toggle').innerHTML='&#9790;'}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','dark');document.querySelector('.theme-toggle').innerHTML='&#9790;'}})();
+var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.stagger').forEach(function(el){obs.observe(el)});
+function toggleOlderRoles(btn){var r=document.getElementById('older-roles');r.classList.toggle('show');btn.textContent=r.classList.contains('show')?'Hide earlier roles':'Show earlier roles (2013\u20132019)'}
+</script>
 </body>
 </html>
