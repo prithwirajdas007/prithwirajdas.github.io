@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prithwiraj Das - Lead Software / Platform Engineer</title>
+    <title>Prithwiraj Das - Lead Software Engineer</title>
     <meta name="description" content="12+ years building cloud-native, transaction-heavy SaaS systems. Distributed Systems, FinTech & Capital Markets. .NET, AWS, Event-Driven Architecture.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -260,6 +260,7 @@
         .stagger.visible > *:nth-child(4) { transition-delay: 0.2s; }
         .stagger.visible > *:nth-child(5) { transition-delay: 0.25s; }
         .stagger.visible > *:nth-child(6) { transition-delay: 0.3s; }
+        .stagger.visible > *:nth-child(7) { transition-delay: 0.35s; }
         .stagger.visible > * { opacity: 1; transform: translateY(0); }
         @media (max-width: 640px) {
             .nav-links a:not(.theme-toggle):not(:last-child) { display: none; }
@@ -291,7 +292,7 @@
 <section class="hero">
     <div class="hero-layout">
         <div class="hero-text">
-            <span class="hero-overline reveal">Lead Software / Platform Engineer</span>
+            <span class="hero-overline reveal">Lead Software Engineer</span>
             <h1 class="reveal">Building <em>distributed systems</em> for fintech &amp; capital markets</h1>
             <p class="hero-summary reveal">
                 Software engineering leader with 12+ years building cloud-native, transaction-heavy SaaS systems across fintech, capital markets, healthcare, and enterprise SaaS. Deep expertise in .NET/C#, event-driven architecture, messaging systems (RabbitMQ, SNS/SQS, SignalR), and AWS. Versatile across Python, Node.js/TypeScript, Angular, React, and Blazor Server, with experience across PostgreSQL, SQL Server, MongoDB, MySQL, Redshift, and data warehouse pipelines. Long-time adopter of AI-assisted development, enthusiastic about how Claude, Copilot, and agentic tooling reshape engineering, while bringing the engineering judgement that decides when they accelerate delivery and when they need correction.
@@ -326,9 +327,11 @@
             <li>Implemented distributed tracing (OpenTelemetry) across a multi-service pricing pipeline, identifying a ~300s latency bottleneck in the Analytics Pipeline and giving leadership actionable data to prioritize optimization.</li>
             <li>Resolved migration-blocking defects affecting all DerivativePath client migrations: multi-tenant data isolation and reversed MTM/NPV pricing values.</li>
             <li>Designed real-time status notification architecture using event sourcing (Marten) and messaging patterns (Rebus), replacing blind polling with live visibility for risk analysts.</li>
+            <li>Piloting a Kafka-based transactional outbox for cross-service messaging, moving the platform toward reliable, replayable event delivery.</li>
+            <li>Driving delivery of five Q2 roadmap epics spanning FX Options, CVA/DVA pricing, performance, and data warehouse migration, coordinating across product, analytics, and platform teams.</li>
         </ul>
         <div class="role-tech">
-            <span>.NET 10</span><span>C#</span><span>Blazor Server</span><span>SignalR</span><span>Marten</span><span>Rebus</span><span>FastEndpoints</span><span>PostgreSQL</span><span>RabbitMQ</span><span>AWS</span><span>OpenTelemetry</span><span>Docker</span>
+            <span>.NET 10</span><span>C#</span><span>Blazor Server</span><span>SignalR</span><span>Marten</span><span>Rebus</span><span>FastEndpoints</span><span>PostgreSQL</span><span>RabbitMQ</span><span>Kafka</span><span>AWS</span><span>OpenTelemetry</span><span>Docker</span>
         </div>
     </div>
 
@@ -485,7 +488,7 @@
     <div class="skills-grid stagger">
         <div class="skill-card">
             <div class="skill-card-title">Languages &amp; Frameworks</div>
-            <div class="skill-card-items">C#, .NET 10, ASP.NET, Blazor Server, Python, Node.js/TypeScript, SQL, Angular, React, SignalR, GitHub Copilot, Claude, ChatGPT</div>
+            <div class="skill-card-items">C#, .NET 10, ASP.NET, Blazor Server, Python, Node.js/TypeScript, SQL, Angular, React, SignalR</div>
         </div>
         <div class="skill-card">
             <div class="skill-card-title">Cloud &amp; Infrastructure</div>
@@ -502,6 +505,10 @@
         <div class="skill-card">
             <div class="skill-card-title">DevOps &amp; CI/CD</div>
             <div class="skill-card-items">GitHub Actions, GitLab CI, Bitbucket Pipelines, Redgate SQL</div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-card-title">AI-Assisted Engineering</div>
+            <div class="skill-card-items">Claude Code, GitHub Copilot, MCP (Model Context Protocol), Semantic Kernel, Ollama, RAG, spec-driven development</div>
         </div>
         <div class="skill-card">
             <div class="skill-card-title">Leadership</div>
@@ -561,6 +568,12 @@
     <span class="section-label reveal">Writing</span>
     <h2 class="section-title reveal">Technical articles</h2>
     <div class="project-grid stagger">
+        <div class="project-card">
+            <div class="project-card-label">2026</div>
+            <div class="project-card-title">The bugs were never in the new code</div>
+            <div class="project-card-desc">Adding one feature to a live multi-tenant system surfaced three stacked bugs, all rooted in the old code's unwritten assumptions rather than the new code itself.</div>
+            <a href="https://medium.com/@prithwirajdas07" target="_blank" rel="noopener" class="project-card-link">Read on Medium &#8594;</a>
+        </div>
         <div class="project-card">
             <div class="project-card-label">April 2026</div>
             <div class="project-card-title">Feature flags are not a free lunch</div>
