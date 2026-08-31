@@ -1,0 +1,165 @@
+/* Photography gallery.
+   The main site keeps its CSS inline in index.html, so the design tokens below
+   are copied from it verbatim. Change a colour there, change it here too. */
+
+:root {
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --bg: #FAFAF7;
+    --bg-alt: #F0EFE9;
+    --bg-card: #FFFFFF;
+    --text-primary: #1A1A18;
+    --text-secondary: #5C5C56;
+    --text-tertiary: #8A8A82;
+    --accent: #2D5A3D;
+    --accent-light: #E8F0EB;
+    --border: #E2E1DB;
+    --border-light: #EDECE6;
+    --radius: 6px;
+    --max-w: 860px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Gallery only */
+    --max-w-gallery: 1440px;
+    --gutter: 16px;
+    --page-pad: 24px;
+}
+
+[data-theme="dark"] {
+    --bg: #141413;
+    --bg-alt: #1C1C1A;
+    --bg-card: #1E1E1C;
+    --text-primary: #E8E7E1;
+    --text-secondary: #A3A29B;
+    --text-tertiary: #6E6D67;
+    --accent: #5FA978;
+    --accent-light: #1E2E24;
+    --border: #2E2E2B;
+    --border-light: #252523;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    transition: background var(--transition), color var(--transition);
+}
+
+/* Nav, matching the main site */
+nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border-light);
+    transition: background var(--transition), border var(--transition);
+}
+.nav-inner {
+    max-width: var(--max-w-gallery); margin: 0 auto; padding: 0 var(--page-pad);
+    height: 56px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-name {
+    font-family: var(--font-display); font-weight: 600; font-size: 18px;
+    color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em;
+}
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a {
+    font-size: 13px; font-weight: 500; color: var(--text-secondary);
+    text-decoration: none; transition: color var(--transition); letter-spacing: 0.02em;
+}
+.nav-links a:hover { color: var(--text-primary); }
+.theme-toggle {
+    background: none; border: 1px solid var(--border); border-radius: 50%;
+    width: 32px; height: 32px; cursor: pointer; display: flex;
+    align-items: center; justify-content: center; color: var(--text-secondary);
+    transition: all var(--transition); font-size: 14px;
+}
+.theme-toggle:hover { border-color: var(--text-tertiary); color: var(--text-primary); }
+
+/* Page chrome stays quiet: a title and a way back, nothing else */
+.page {
+    max-width: var(--max-w-gallery); margin: 0 auto;
+    padding: 120px var(--page-pad) 0;
+}
+.page-title {
+    font-family: var(--font-display); font-size: 32px; font-weight: 500;
+    letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 32px; color: var(--text-primary);
+}
+
+/* Masonry */
+.grid {
+    column-count: 4;
+    column-gap: var(--gutter);
+    margin-bottom: 48px;
+}
+.photo {
+    break-inside: avoid;
+    margin: 0 0 var(--gutter);
+}
+.photo a {
+    display: block;
+    text-decoration: none;
+    background: var(--bg-alt);
+}
+.photo a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+.photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    transition: opacity var(--transition);
+}
+.photo a:hover img { opacity: 0.88; }
+.photo figcaption {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-tertiary);
+    margin-top: 8px;
+}
+
+/* Lightbox caption, registered by gallery.js */
+.pswp__custom-caption {
+    position: absolute;
+    left: 0; right: 0; bottom: 24px;
+    margin: 0 auto;
+    max-width: 640px;
+    padding: 0 16px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.grid-message {
+    color: var(--text-secondary);
+    font-size: 15px;
+    padding: 8px 0 48px;
+}
+
+footer {
+    max-width: var(--max-w-gallery); margin: 0 auto;
+    padding: 24px var(--page-pad) 48px;
+    border-top: 1px solid var(--border-light); font-size: 12px; color: var(--text-tertiary);
+}
+
+@media (max-width: 1279px) {
+    .grid { column-count: 3; }
+}
+@media (max-width: 899px) {
+    .grid { column-count: 2; }
+}
+@media (max-width: 599px) {
+    :root { --page-pad: 16px; }
+    .grid { column-count: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body, .photo img, .nav-links a, .theme-toggle { transition: none; }
+}
