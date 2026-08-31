@@ -1,0 +1,16 @@
+{
+  "name": "prithwirajdas-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static portfolio site. The only tooling is the photography gallery image pipeline.",
+  "scripts": {
+    "gallery": "node tools/build-gallery.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
