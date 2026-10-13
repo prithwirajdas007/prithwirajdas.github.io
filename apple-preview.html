@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prithwiraj Das Portfolio</title>
+<meta name="description" content="12+ years building cloud-native, transaction-heavy SaaS systems. Distributed Systems, FinTech & Capital Markets. .NET, AWS, Event-Driven Architecture.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<script>
+/* Apply the saved theme before first paint, so dark-mode visitors never see a light flash. */
+(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}document.documentElement.classList.add('js')})();
+</script>
+<style>
+/* Layout: full-bleed bands that alternate surface tone, each holding one 980px column; translucent sticky bar on top. */
+:root {
+    --bg: #ffffff;
+    --bg-alt: #f5f5f7;
+    --card: #ffffff;
+    --fg: #1d1d1f;
+    --fg-2: #6e6e73;
+    --hairline: rgba(0, 0, 0, 0.1);
+    --chip: rgba(0, 0, 0, 0.05);
+    --accent: #2a6a44;
+    --accent-tint: rgba(42, 106, 68, 0.1);
+    --on-accent: #ffffff;
+    --bar: rgba(255, 255, 255, 0.72);
+    --bar-solid: #ffffff;
+    --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+    --shadow-lift: 0 2px 4px rgba(0,0,0,0.05), 0 16px 40px rgba(0,0,0,0.1);
+
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    --col: 61.25rem;
+    --gutter: 1.375rem;
+    --radius-lg: 1.125rem;
+    --radius-md: 0.75rem;
+    /* Critically damped spring approximation: fast start, no overshoot. */
+    --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-theme: 300ms ease;
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #000000;
+        --bg-alt: #111113;
+        --card: #1c1c1e;
+        --fg: #f5f5f7;
+        --fg-2: #a1a1a6;
+        --hairline: rgba(255, 255, 255, 0.12);
+        --chip: rgba(255, 255, 255, 0.08);
+        --accent: #62c38a;
+        --accent-tint: rgba(98, 195, 138, 0.14);
+        --on-accent: #04130a;
+        --bar: rgba(22, 22, 23, 0.72);
+        --bar-solid: #161617;
+        --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.4);
+        --shadow-lift: 0 2px 4px rgba(0,0,0,0.5), 0 16px 40px rgba(0,0,0,0.55);
+        color-scheme: dark;
+    }
+}
+:root[data-theme="dark"] {
+    --bg: #000000;
+    --bg-alt: #111113;
+    --card: #1c1c1e;
+    --fg: #f5f5f7;
+    --fg-2: #a1a1a6;
+    --hairline: rgba(255, 255, 255, 0.12);
+    --chip: rgba(255, 255, 255, 0.08);
+    --accent: #62c38a;
+    --accent-tint: rgba(98, 195, 138, 0.14);
+    --on-accent: #04130a;
+    --bar: rgba(22, 22, 23, 0.72);
+    --bar-solid: #161617;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.4);
+    --shadow-lift: 0 2px 4px rgba(0,0,0,0.5), 0 16px 40px rgba(0,0,0,0.55);
+    color-scheme: dark;
+}
+@media (prefers-contrast: more) {
+    :root { --fg-2: #3a3a3c; --hairline: rgba(0,0,0,0.35); }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0;
+    font: 400 1.0625rem/1.55 var(--font);
+    letter-spacing: -0.011em;
+    color: var(--fg);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color var(--ease-theme), color var(--ease-theme);
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; font-family: var(--font-display); }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+.skip {
+    position: absolute; left: var(--gutter); top: -3rem; z-index: 200;
+    background: var(--fg); color: var(--bg); padding: 0.5rem 1rem; border-radius: 999px;
+    text-decoration: none; font-size: 0.875rem;
+}
+.skip:focus { top: 0.75rem; }
+
+.wrap { max-width: var(--col); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* ---------- Translucent bar ---------- */
+.bar {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 100;
+    background: var(--bar);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    box-shadow: 0 1px 0 transparent;
+    transition: box-shadow 200ms ease, background-color var(--ease-theme);
+}
+/* Scroll-edge effect: the hairline appears only once content actually slides under the bar. */
+.bar.scrolled { box-shadow: 0 1px 0 var(--hairline); }
+.bar-inner {
+    display: flex; align-items: center; gap: 1.5rem;
+    min-height: 3.25rem; flex-wrap: wrap;
+}
+.brand {
+    font: 600 1.0625rem/1 var(--font-display); letter-spacing: -0.022em;
+    text-decoration: none; margin-right: auto;
+}
+.links { display: flex; gap: 1.5rem; font-size: 0.8125rem; letter-spacing: -0.005em; }
+.links a {
+    text-decoration: none; color: var(--fg-2);
+    transition: color 150ms ease;
+    padding-block: 0.25rem;
+}
+.links a:hover, .links a[aria-current="true"] { color: var(--fg); }
+.links a[aria-current="true"] { font-weight: 600; }
+
+.seg {
+    display: inline-flex; padding: 2px; border-radius: 999px; background: var(--chip);
+}
+.seg button {
+    appearance: none; border: 0; background: transparent; color: var(--fg-2);
+    width: 1.75rem; height: 1.5rem; border-radius: 999px; cursor: pointer;
+    display: grid; place-items: center;
+    transition: background-color 200ms var(--ease-spring), color 150ms ease, transform 100ms ease-out;
+}
+.seg button svg { width: 0.875rem; height: 0.875rem; }
+.seg button[aria-pressed="true"] { background: var(--card); color: var(--fg); box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+.seg button:active { transform: scale(0.92); }
+
+/* ---------- Bands ---------- */
+.band { padding-block: 5.5rem; scroll-margin-top: 3.25rem; }
+.band.alt { background: var(--bg-alt); transition: background-color var(--ease-theme); }
+.eyebrow {
+    display: block; font-size: 1.0625rem; font-weight: 600; color: var(--accent);
+    letter-spacing: -0.01em; margin-bottom: 0.375rem;
+}
+.title {
+    font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); font-weight: 700;
+    line-height: 1.08; letter-spacing: -0.028em; margin-bottom: 3rem;
+}
+
+/* ---------- Hero ---------- */
+.hero { padding-block: 4.5rem 5.5rem; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3.5rem; align-items: center; }
+.hero-photo {
+    width: 11.25rem; aspect-ratio: 1; max-width: 100%; border-radius: 50%; overflow: hidden;
+    box-shadow: var(--shadow-lift);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.role-line { font-size: 1.1875rem; font-weight: 600; color: var(--fg-2); letter-spacing: -0.015em; margin-bottom: 0.75rem; }
+.hero h1 {
+    font-size: clamp(2.5rem, 1.5rem + 4.4vw, 4.75rem);
+    font-weight: 700; line-height: 1.04; letter-spacing: -0.038em;
+    margin-bottom: 1.75rem;
+}
+.hero h1 .hl { color: var(--accent); }
+.lede { font-size: 1.1875rem; line-height: 1.5; color: var(--fg-2); max-width: 40rem; letter-spacing: -0.014em; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; align-items: center; }
+
+.btn {
+    display: inline-flex; align-items: center; gap: 0.375rem;
+    font: 500 1rem/1 var(--font); letter-spacing: -0.01em;
+    padding: 0.8125rem 1.375rem; border-radius: 999px; text-decoration: none;
+    cursor: pointer; border: 0;
+    transition: transform 100ms ease-out, background-color 200ms ease, color 200ms ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-ghost { background: var(--chip); color: var(--fg); }
+.btn-ghost:hover { background: var(--accent-tint); color: var(--accent); }
+.place { font-size: 0.9375rem; color: var(--fg-2); margin-left: 0.25rem; }
+
+/* ---------- Experience ---------- */
+.roles { display: grid; }
+.role {
+    display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 0.5rem 2.5rem;
+    padding-block: 2.25rem; border-top: 1px solid var(--hairline);
+}
+.role:first-child { border-top: 0; padding-top: 0; }
+.when { font-size: 0.875rem; color: var(--fg-2); font-variant-numeric: tabular-nums; padding-top: 0.3rem; letter-spacing: 0; }
+.role h3 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.022em; line-height: 1.2; }
+.org { font-size: 1rem; color: var(--accent); font-weight: 500; margin: 0.25rem 0 0.875rem; }
+.role .intro { color: var(--fg); max-width: 42rem; }
+.points { display: grid; gap: 0.625rem; margin-top: 1rem; max-width: 42rem; }
+.points li { position: relative; padding-left: 1.125rem; color: var(--fg-2); font-size: 1rem; line-height: 1.55; }
+.points li::before {
+    content: ''; position: absolute; left: 0; top: 0.65em;
+    width: 0.375rem; height: 0.375rem; border-radius: 50%; background: var(--fg-2); opacity: 0.5;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-top: 1.25rem; }
+.chips span {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.01em;
+    padding: 0.25rem 0.625rem; border-radius: 999px; background: var(--chip); color: var(--fg-2);
+}
+
+/* Height animates via the grid-rows trick, so the reveal is continuous and can be reversed mid-way. */
+.older { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 450ms var(--ease-spring); }
+.older.open { grid-template-rows: 1fr; }
+.older > .roles { overflow: hidden; min-height: 0; }
+.older .role:first-child { border-top: 1px solid var(--hairline); padding-top: 2.25rem; }
+.more {
+    margin-top: 2rem; display: inline-flex; align-items: center; gap: 0.5rem;
+    background: none; border: 0; padding: 0.5rem 0; cursor: pointer;
+    font: 500 1rem/1 var(--font); color: var(--accent); letter-spacing: -0.01em;
+    transition: transform 100ms ease-out;
+}
+.more:active { transform: scale(0.97); }
+.more svg { width: 0.75rem; height: 0.75rem; transition: transform 350ms var(--ease-spring); }
+.more[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+/* ---------- Skills bento ---------- */
+.bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.tile {
+    background: var(--card); border-radius: var(--radius-lg); padding: 1.75rem;
+    transition: background-color var(--ease-theme);
+}
+.tile h3 { font-size: 1.1875rem; font-weight: 600; letter-spacing: -0.018em; margin-bottom: 0.625rem; }
+.tile p { font-size: 0.9375rem; color: var(--fg-2); line-height: 1.6; }
+.tile.wide {
+    grid-column: 1 / -1;
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 1.5rem; align-items: center;
+    background: linear-gradient(135deg, var(--accent-tint), transparent 70%), var(--card);
+}
+.band:not(.alt) .tile { background: var(--bg-alt); }
+.band:not(.alt) .tile.wide { background: linear-gradient(135deg, var(--accent-tint), transparent 70%), var(--bg-alt); }
+.tile.wide h3 { font-size: 1.5rem; margin: 0; }
+.tile.wide p { font-size: 1.0625rem; color: var(--fg); }
+
+/* ---------- Projects & writing ---------- */
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card {
+    display: flex; flex-direction: column; gap: 0.625rem;
+    background: var(--card); border-radius: var(--radius-lg); padding: 1.75rem;
+    text-decoration: none; box-shadow: var(--shadow);
+    transition: transform 400ms var(--ease-spring), box-shadow 400ms var(--ease-spring), background-color var(--ease-theme);
+}
+.band:not(.alt) .card { background: var(--bg-alt); box-shadow: none; }
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+/* Feedback on press, not on release. */
+.card:active { transform: scale(0.98); transition-duration: 100ms; }
+.card h3 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
+.card p { font-size: 0.9375rem; color: var(--fg-2); line-height: 1.6; flex: 1; }
+.go { font-size: 0.9375rem; font-weight: 500; color: var(--accent); }
+.go::after { content: ' \203A'; display: inline-block; transition: transform 300ms var(--ease-spring); }
+.card:hover .go::after { transform: translateX(3px); }
+.status {
+    align-self: flex-start; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.01em;
+    padding: 0.1875rem 0.625rem; border-radius: 999px;
+}
+.status.live { background: var(--accent-tint); color: var(--accent); }
+.status.wip { background: var(--chip); color: var(--fg); }
+.status.ref { background: var(--chip); color: var(--fg-2); }
+.status.plan { background: transparent; color: var(--fg-2); box-shadow: inset 0 0 0 1px var(--hairline); }
+.date { font-size: 0.8125rem; color: var(--fg-2); font-variant-numeric: tabular-nums; }
+
+/* ---------- Highlights & education ---------- */
+.split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4rem; }
+.highlights { display: grid; gap: 1.25rem; }
+.highlights li { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); gap: 0.5rem; color: var(--fg); }
+.highlights svg { width: 1.125rem; height: 1.125rem; color: var(--accent); margin-top: 0.2rem; }
+.edu { display: grid; }
+.edu li { padding-block: 1.125rem; border-top: 1px solid var(--hairline); display: grid; gap: 0.125rem; }
+.edu li:first-child { border-top: 0; padding-top: 0; }
+.edu strong { font-weight: 600; letter-spacing: -0.015em; }
+.edu span { font-size: 0.9375rem; color: var(--fg-2); }
+.edu .yr { font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
+.certs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+.certs span { font-size: 0.8125rem; font-weight: 500; padding: 0.375rem 0.875rem; border-radius: 999px; background: var(--accent-tint); color: var(--accent); }
+.subhead { font-size: 1.1875rem; font-weight: 600; letter-spacing: -0.018em; margin-bottom: 1.5rem; }
+
+/* ---------- Contact ---------- */
+.contact { text-align: center; }
+.contact .title { margin-bottom: 1rem; }
+.contact .lede { margin-inline: auto; }
+.email-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.75rem; margin-top: 2rem; }
+.email {
+    font: 600 clamp(1.25rem, 1rem + 1.5vw, 1.75rem)/1.2 var(--font-display); letter-spacing: -0.02em;
+    text-decoration: none; color: var(--fg); user-select: all; overflow-wrap: anywhere;
+}
+.email:hover { color: var(--accent); }
+.copied { font-size: 0.875rem; color: var(--accent); min-width: 4rem; text-align: left; }
+.contact-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 2rem; margin-top: 2rem; font-size: 0.9375rem; color: var(--fg-2); }
+.contact-list a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+.contact-list a:hover { color: var(--accent); border-color: var(--accent); }
+
+footer { padding-block: 1.75rem 3rem; font-size: 0.75rem; color: var(--fg-2); border-top: 1px solid var(--hairline); }
+
+/* ---------- Reveal: content is visible at rest unless JS is running ---------- */
+.js .reveal { opacity: 0; transform: translateY(1rem); transition: opacity 700ms var(--ease-spring), transform 700ms var(--ease-spring); }
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* ---------- Accessibility preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .reveal { transform: none; transition: opacity 250ms ease; }
+    .card, .card:hover, .card:active, .btn:active, .more:active, .seg button:active { transform: none; }
+    .older { transition: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+    .bar { background: var(--bar-solid); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 52rem) {
+    .bento, .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .split { grid-template-columns: minmax(0, 1fr); gap: 3.5rem; }
+}
+@media (max-width: 40rem) {
+    .band { padding-block: 4rem; }
+    .hero { padding-block: 2.5rem 4rem; }
+    .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .hero-photo { width: 7.5rem; order: -1; }
+    .bar-inner { gap: 0.25rem 1rem; padding-block: 0.5rem; }
+    /* Wayfinding stays on phones: links move to their own scrollable row instead of disappearing. */
+    .links { order: 3; width: 100%; overflow-x: auto; gap: 1.25rem; scrollbar-width: none; padding-bottom: 0.125rem; }
+    .links::-webkit-scrollbar { display: none; }
+    .links a { white-space: nowrap; }
+    .role { grid-template-columns: minmax(0, 1fr); }
+    .bento, .cards, .cards.two { grid-template-columns: minmax(0, 1fr); }
+    .tile.wide { grid-template-columns: minmax(0, 1fr); gap: 0.625rem; }
+    .title { margin-bottom: 2rem; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar" id="bar">
+    <div class="wrap bar-inner">
+        <a class="brand" href="#top">Prithwiraj Das</a>
+        <nav class="links" aria-label="Sections">
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#writing">Writing</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="seg" role="group" aria-label="Appearance">
+            <button type="button" data-set="auto" aria-pressed="true" title="Match system" aria-label="Match system appearance">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 2a6 6 0 0 1 0 12z" fill="currentColor"/></svg>
+            </button>
+            <button type="button" data-set="light" aria-pressed="false" title="Light" aria-label="Light appearance">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.5M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1 1M11.6 11.6l1 1M3.4 12.6l1-1M11.6 4.4l1-1"/></svg>
+            </button>
+            <button type="button" data-set="dark" aria-pressed="false" title="Dark" aria-label="Dark appearance">
+                <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.5 9.8A5.8 5.8 0 0 1 6.2 2.5a5.8 5.8 0 1 0 7.3 7.3z"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main id="main">
+
+<section class="band hero" id="top">
+    <div class="wrap hero-grid">
+        <div>
+            <p class="role-line">Lead Software Engineer</p>
+            <h1>Building <span class="hl">distributed systems</span> for fintech &amp; capital markets.</h1>
+            <p class="lede">Software engineering leader with 12+ years building cloud-native, transaction-heavy SaaS systems across fintech, capital markets, healthcare, and enterprise SaaS. Deep expertise in .NET/C#, event-driven architecture, messaging systems (RabbitMQ, SNS/SQS, SignalR), and AWS. Versatile across Python, Node.js/TypeScript, Angular, React, and Blazor Server, with experience across PostgreSQL, SQL Server, MongoDB, MySQL, Redshift, and data warehouse pipelines. Long-time adopter of AI-assisted development, enthusiastic about how Claude, Copilot, and agentic tooling reshape engineering, while bringing the engineering judgement that decides when they accelerate delivery and when they need correction.</p>
+            <div class="actions">
+                <a class="btn btn-primary" href="#contact">Get in touch</a>
+                <a class="btn btn-ghost" href="https://linkedin.com/in/prithwirajdas" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="btn btn-ghost" href="https://github.com/prithwirajdas007" target="_blank" rel="noopener">GitHub</a>
+                <span class="place">Greater Toronto Area, Canada</span>
+            </div>
+        </div>
+        <div class="hero-photo">
+            <img src="assets/images/profile-400.webp" width="400" height="400" alt="Portrait of Prithwiraj Das">
+        </div>
+    </div>
+</section>
+
+<section class="band alt" id="experience">
+    <div class="wrap">
+        <span class="eyebrow reveal">Experience</span>
+        <h2 class="title reveal">Where I've built things.</h2>
+
+        <div class="roles">
+            <article class="role reveal">
+                <div class="when">Oct 2025 – Present</div>
+                <div>
+                    <h3>Lead Software Engineer</h3>
+                    <p class="org">Derivative Path · Walnut Creek, CA (Remote)</p>
+                    <p class="intro">Driving the migration of a legacy derivatives trading platform to modern cloud-native architecture on DerivativeEDGE. Working across the full distributed pipeline: trade entry, pricing, risk, and analytics.</p>
+                    <ul class="points">
+                        <li>Implemented distributed tracing (OpenTelemetry) across a multi-service pricing pipeline, identifying a ~300s latency bottleneck in the Analytics Pipeline and giving leadership actionable data to prioritize optimization.</li>
+                        <li>Resolved migration-blocking defects affecting all DerivativePath client migrations: multi-tenant data isolation and reversed MTM/NPV pricing values.</li>
+                        <li>Designed real-time status notification architecture using event sourcing (Marten) and messaging patterns (Rebus), replacing blind polling with live visibility for risk analysts.</li>
+                        <li>Piloting a Kafka-based transactional outbox for cross-service messaging, moving the platform toward reliable, replayable event delivery.</li>
+                        <li>Driving delivery of five Q2 roadmap epics spanning FX Options, CVA/DVA pricing, performance, and data warehouse migration, coordinating across product, analytics, and platform teams.</li>
+                    </ul>
+                    <div class="chips"><span>.NET 10</span><span>C#</span><span>Blazor Server</span><span>SignalR</span><span>Marten</span><span>Rebus</span><span>FastEndpoints</span><span>PostgreSQL</span><span>RabbitMQ</span><span>Kafka</span><span>AWS</span><span>OpenTelemetry</span><span>Docker</span></div>
+                </div>
+            </article>
+
+            <article class="role reveal">
+                <div class="when">Sep 2024 – Sep 2025</div>
+                <div>
+                    <h3>Software Development Team Lead</h3>
+                    <p class="org">Snap-On (Dealer-FX) · Toronto, ON</p>
+                    <p class="intro">Led two product teams on the Dealer-FX One Platform, a cloud-native SaaS suite for automotive OEMs and dealerships.</p>
+                    <ul class="points">
+                        <li>Led GM My Rewards integration, managing core team and contractors, securing Dealer-FX as GM's preferred vendor.</li>
+                        <li>Built and deployed APIs using AWS SAM-based Node.js with Sequelize ORM for Purchase Order and Parts Inventory.</li>
+                        <li>Stabilized release quality and delivery cadence, reduced hotfixes and bug escape rates, improved sprint throughput.</li>
+                        <li>Managed a team of 4 developers and 2 QA engineers, reducing hotfixes by 60-70% and bug escape rates by 70-80%, with sprint throughput up 20-30%.</li>
+                    </ul>
+                    <div class="chips"><span>.NET Core 8</span><span>Node.js</span><span>Sequelize</span><span>AWS Lambda</span><span>AWS SAM</span><span>PostgreSQL</span><span>Redis</span><span>Angular 16/17</span><span>GitHub Actions</span><span>Docker</span></div>
+                </div>
+            </article>
+
+            <article class="role reveal">
+                <div class="when">Apr 2023 – Sep 2024</div>
+                <div>
+                    <h3>Software Engineering Team Lead</h3>
+                    <p class="org">EverCommerce (Service Fusion) · Toronto, ON</p>
+                    <p class="intro">Led Service Fusion SaaS platform rewrite from monolith to microservices using Ardalis Clean Architecture. Managed a team of 4.</p>
+                    <ul class="points">
+                        <li>Delivered 10DLC messaging compliance transformation within a 2-month deadline, one of the first features shipped on the rewritten architecture, supporting ~600 messages/day for initial clients.</li>
+                        <li>Supported data warehouse initiative via Decodable and AWS Lambda, then led delivery of the reporting microservice to early adopters within 2 months.</li>
+                        <li>Standardized microservices patterns across a 4-engineer team spanning ~10 microservices, updating project templates and AWS CodeArtifact package management.</li>
+                    </ul>
+                    <div class="chips"><span>.NET Core 7</span><span>C#</span><span>MySQL</span><span>AWS</span><span>Ardalis Clean Architecture</span><span>Decodable</span><span>Docker</span><span>xUnit</span></div>
+                </div>
+            </article>
+
+            <article class="role reveal">
+                <div class="when">May 2022 – Apr 2023</div>
+                <div>
+                    <h3>Senior Software Engineer</h3>
+                    <p class="org">BeyondTrust · Halifax, NS (Remote)</p>
+                    <p class="intro">Contributed to the Endpoint Privilege Management (EPM) product suite, bringing microservices experience as the department transitioned to cloud-native architecture.</p>
+                    <ul class="points">
+                        <li>Delivered key microservices for the EPM platform and contributed to migrating a legacy product to a multi-tenant SaaS model.</li>
+                        <li>Stepped up to support the DevOps team in migrating from Azure DevOps to GitHub, redesigning 14 CI/CD pipelines across Terraform and Kubernetes.</li>
+                    </ul>
+                    <div class="chips"><span>.NET Core 6/7</span><span>PostgreSQL</span><span>Elasticsearch</span><span>AWS</span><span>Azure</span><span>GitHub Actions</span><span>Docker</span><span>Kubernetes</span></div>
+                </div>
+            </article>
+
+            <article class="role reveal">
+                <div class="when">May 2021 – May 2022</div>
+                <div>
+                    <h3>Senior/Lead Backend Developer</h3>
+                    <p class="org">Paige AI (via Velocity Global) · Toronto, ON / Contract</p>
+                    <p class="intro">Led backend development for the FullFocus Viewer, an AI-powered digital pathology platform. Oversaw API design, deployment, and cross-team integration.</p>
+                    <ul class="points">
+                        <li>Led the rewrite of FullFocus Viewer backend to .NET 6 across 3 microservices, serving ~50 pathologists, introducing new APIs for product integration.</li>
+                        <li>Built 3 microservices in Python (Flask) for new capabilities and audit trails required for FDA certification.</li>
+                        <li>Played a key role in achieving FDA certification, the first FDA-cleared AI-powered digital pathology platform for primary diagnosis.</li>
+                    </ul>
+                    <div class="chips"><span>.NET Core 5/6</span><span>Python</span><span>AWS</span><span>PostgreSQL</span><span>MongoDB</span><span>Redis</span><span>Kubernetes</span><span>DataDog</span><span>GitLab CI</span></div>
+                </div>
+            </article>
+
+            <article class="role reveal">
+                <div class="when">Aug 2019 – May 2021</div>
+                <div>
+                    <h3>Senior/Lead Software Engineer</h3>
+                    <p class="org">Affirm (PayBright) · Toronto, ON</p>
+                    <p class="intro">Joined PayBright as Senior Developer, grew into Lead Engineering role during rapid scale (13 to 45 engineers). Contributed to hiring, mentoring, and drove foundational changes to development process before acquisition by Affirm.</p>
+                    <ul class="points">
+                        <li>Led Core Loan Systems rewrite into .NET Core microservices, including domain discovery and POC work shaping next-gen architecture.</li>
+                        <li>Transformed database development workflow with Redgate SQL, reducing deployment time from days to hours via automated CI/CD pipelines.</li>
+                        <li>Delivered key client integrations (Samsung Canada, Apple Canada), contributing to market dominance and eventual acquisition by Affirm.</li>
+                        <li>Built ETL/ELT workflows using Python, Azure Data Factory, and Node.js. Created BI dashboards on Looker for stakeholders.</li>
+                    </ul>
+                    <div class="chips"><span>.NET Core</span><span>C#</span><span>SQL Server</span><span>MongoDB</span><span>Node.js</span><span>Python</span><span>Azure Data Factory</span><span>Redgate SQL</span><span>Docker</span><span>Looker</span></div>
+                </div>
+            </article>
+        </div>
+
+        <div class="older" id="older">
+            <div class="roles" inert>
+                <article class="role">
+                    <div class="when">Nov 2018 – Aug 2019</div>
+                    <div>
+                        <h3>Dynamics CRM/.NET Developer</h3>
+                        <p class="org">Cineplex Entertainment · Toronto, ON</p>
+                        <p class="intro">Built features for the Corporate Fulfillment platform, a CRM and web application for Cineplex gift card sales and distribution.</p>
+                        <div class="chips"><span>.NET</span><span>Dynamics CRM 2016</span><span>C#</span><span>SQL Server</span><span>Agility CMS</span><span>WCF</span></div>
+                    </div>
+                </article>
+                <article class="role">
+                    <div class="when">Nov 2017 – Nov 2018</div>
+                    <div>
+                        <h3>Senior Software Developer</h3>
+                        <p class="org">Fleet Complete · Toronto, ON · Contract</p>
+                        <p class="intro">Modernized Courier Complete from VB6 desktop to web using REST APIs and Angular 6. Represented Fleet Complete at the AT&amp;T IoT Civic Hackathon.</p>
+                        <div class="chips"><span>.NET</span><span>Angular 6</span><span>.NET Core</span><span>Web API 2</span><span>MVC 5</span><span>SQL Server</span></div>
+                    </div>
+                </article>
+                <article class="role">
+                    <div class="when">Jun 2017 – Nov 2017</div>
+                    <div>
+                        <h3>Senior Software Developer</h3>
+                        <p class="org">Condo Control Central · Toronto, ON · Contract</p>
+                        <p class="intro">Developed features for the property management SaaS platform. Built a Status Certificate portal for condo unit owners.</p>
+                        <div class="chips"><span>.NET</span><span>C#</span><span>MVC 3</span><span>SQL Server</span><span>DevExpress</span></div>
+                    </div>
+                </article>
+                <article class="role">
+                    <div class="when">May 2015 – Jun 2017</div>
+                    <div>
+                        <h3>Software Developer</h3>
+                        <p class="org">Advanced Utility Systems · Toronto, ON</p>
+                        <p class="intro">Key member of the CIS Infinity billing platform team. Led the Infinity.Link V4 portal rewrite on DotNetNuke. AODA compliance work enabled City of Ottawa to sign a $3M contract, the company's largest acquisition in 2016.</p>
+                        <div class="chips"><span>.NET</span><span>DotNetNuke</span><span>SQL Server</span><span>Bootstrap 3</span><span>REST API</span><span>WCAG 2.0</span></div>
+                    </div>
+                </article>
+                <article class="role">
+                    <div class="when">Jul 2014 – Apr 2015</div>
+                    <div>
+                        <h3>IT Consultant</h3>
+                        <p class="org">Dapasoft Inc · Toronto, ON</p>
+                        <p class="intro">Delivered .NET web applications, Dynamics CRM integrations, and data migration solutions across client projects including OFIFC, Bell Fund (Bell Canada), and DATIS.</p>
+                        <div class="chips"><span>.NET</span><span>Dynamics CRM 2013</span><span>SQL Server</span><span>Telerik UI</span><span>XRM Framework</span></div>
+                    </div>
+                </article>
+                <article class="role">
+                    <div class="when">Nov 2013 – Apr 2014</div>
+                    <div>
+                        <h3>Software Developer (Internship)</h3>
+                        <p class="org">AMA Inc · Mississauga, ON</p>
+                        <p class="intro">Built a Wi-Fi marketing portal for retail locations. Presented at a CBC News showcase event, resulting in 3 client sign-ups including Shoppers Drug Mart.</p>
+                        <div class="chips"><span>.NET</span><span>C#</span><span>PHP</span><span>Linux</span></div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <button class="more" type="button" id="more" aria-expanded="false" aria-controls="older">
+            <span>Show earlier roles (2013–2019)</span>
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>
+        </button>
+    </div>
+</section>
+
+<section class="band" id="skills">
+    <div class="wrap">
+        <span class="eyebrow reveal">Technical skills</span>
+        <h2 class="title reveal">What I work with.</h2>
+        <div class="bento">
+            <div class="tile reveal"><h3>Languages &amp; Frameworks</h3><p>C#, .NET 10, ASP.NET, Blazor Server, Python, Node.js/TypeScript, SQL, Angular, React, SignalR</p></div>
+            <div class="tile reveal"><h3>Cloud &amp; Infrastructure</h3><p>AWS (Lambda, S3, EC2, EKS, SAM, SNS/SQS), Azure (AD, DevOps, SQL), Docker, Kubernetes, Terraform</p></div>
+            <div class="tile reveal"><h3>Architecture &amp; Patterns</h3><p>Microservices, Event Sourcing (Marten), CQRS, Clean Architecture, FastEndpoints, Rebus, OpenTelemetry</p></div>
+            <div class="tile reveal"><h3>Databases &amp; Data</h3><p>PostgreSQL, SQL Server, MongoDB, MySQL, Redis, Redshift, Kafka, ETL/ELT (Azure Data Factory, Decodable)</p></div>
+            <div class="tile reveal"><h3>DevOps &amp; CI/CD</h3><p>GitHub Actions, GitLab CI, Bitbucket Pipelines, Redgate SQL</p></div>
+            <div class="tile reveal"><h3>Leadership</h3><p>Team leadership (4 to 6 engineers), architecture ownership, code review, sprint execution, cross-functional delivery, mentoring</p></div>
+            <div class="tile wide reveal"><h3>AI-Assisted Engineering</h3><p>Claude Code, GitHub Copilot, MCP (Model Context Protocol), Semantic Kernel, Ollama, RAG, spec-driven development</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="band alt" id="projects">
+    <div class="wrap">
+        <span class="eyebrow reveal">Projects &amp; open source</span>
+        <h2 class="title reveal">Side work &amp; explorations.</h2>
+        <div class="cards">
+            <a class="card reveal" href="https://github.com/prithwirajdas007/WorkerSagaDemo" target="_blank" rel="noopener">
+                <span class="status live">Showcase</span>
+                <h3>WorkerSagaDemo</h3>
+                <p>Distributed saga orchestration with AI trade classification. Rebus sagas, transactional outbox, Semantic Kernel + Ollama, SignalR real-time UI, .NET Aspire, OpenTelemetry custom spans.</p>
+                <span class="go">View on GitHub</span>
+            </a>
+            <a class="card reveal" href="https://github.com/prithwirajdas007/ServiceTrackr" target="_blank" rel="noopener">
+                <span class="status live">Showcase</span>
+                <h3>ServiceTrackr</h3>
+                <p>Secure .NET 9 Web API with clean architecture, JWT auth with refresh tokens, PostgreSQL with EF Core, Redis caching, Docker-ready.</p>
+                <span class="go">View on GitHub</span>
+            </a>
+            <a class="card reveal" href="https://github.com/prithwirajdas007/dotnet-marten-starter" target="_blank" rel="noopener">
+                <span class="status wip">In progress</span>
+                <h3>dotnet-marten-starter</h3>
+                <p>Reference implementation for event sourcing and CQRS with Marten on PostgreSQL.</p>
+                <span class="go">View on GitHub</span>
+            </a>
+            <a class="card reveal" href="https://github.com/prithwirajdas007/dotnet-architecture-decisions" target="_blank" rel="noopener">
+                <span class="status ref">Reference</span>
+                <h3>dotnet-architecture-decisions</h3>
+                <p>Architecture decision records and notes on distributed .NET. Outbox, sagas, observability, and the tradeoffs behind them.</p>
+                <span class="go">View on GitHub</span>
+            </a>
+            <a class="card reveal" href="https://github.com/prithwirajdas007/dotnet-otel-cookbook" target="_blank" rel="noopener">
+                <span class="status ref">Reference</span>
+                <h3>dotnet-otel-cookbook</h3>
+                <p>Practical OpenTelemetry recipes for .NET. Custom spans, metrics, and traces across messaging, sagas, and AI calls.</p>
+                <span class="go">View on GitHub</span>
+            </a>
+            <a class="card reveal" href="https://github.com/prithwirajdas007/ContextForge" target="_blank" rel="noopener">
+                <span class="status plan">Planned</span>
+                <h3>ContextForge</h3>
+                <p>AI context platform exploring RAG fundamentals, polyglot storage, and MCP integration.</p>
+                <span class="go">View on GitHub</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="band" id="writing">
+    <div class="wrap">
+        <span class="eyebrow reveal">Writing</span>
+        <h2 class="title reveal">Technical articles.</h2>
+        <div class="cards two">
+            <a class="card reveal" href="https://medium.com/@prithwirajdas07" target="_blank" rel="noopener">
+                <span class="date">2026</span>
+                <h3>The bugs were never in the new code</h3>
+                <p>Adding one feature to a live multi-tenant system surfaced three stacked bugs, all rooted in the old code's unwritten assumptions rather than the new code itself.</p>
+                <span class="go">Read on Medium</span>
+            </a>
+            <a class="card reveal" href="https://medium.com/@prithwirajdas07/feature-flags-are-not-a-free-lunch-fb8cc82b3f10" target="_blank" rel="noopener">
+                <span class="date">April 2026</span>
+                <h3>Feature flags are not a free lunch</h3>
+                <p>What I learned about the hidden cost of feature flags after migrating between flag providers in production, and why treating them as free switches leads to real problems.</p>
+                <span class="go">Read on Medium</span>
+            </a>
+            <a class="card reveal" href="https://medium.com/@prithwirajdas07/what-goes-wrong-when-you-switch-branching-strategies-mid-flight-5b01423e5626" target="_blank" rel="noopener">
+                <span class="date">April 2026</span>
+                <h3>What goes wrong when you switch branching strategies mid-flight</h3>
+                <p>Lessons from switching branching strategies on an active codebase. What broke, what worked, and what I would do differently next time.</p>
+                <span class="go">Read on Medium</span>
+            </a>
+            <a class="card reveal" href="https://medium.com/@prithwirajdas07/what-broke-my-jwt-flow-in-blazor-server-and-how-i-fixed-it-50df948a64dd" target="_blank" rel="noopener">
+                <span class="date">March 2026</span>
+                <h3>What broke my JWT flow in Blazor Server and how I fixed it</h3>
+                <p>Three issues I hit in production with HttpContext, token caching, and IHttpClientFactory handler pooling. Here is what fixed each one.</p>
+                <span class="go">Read on Medium</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="band alt" id="background">
+    <div class="wrap split">
+        <div>
+            <span class="eyebrow reveal">Highlights</span>
+            <h2 class="subhead reveal">Notable achievements</h2>
+            <ul class="highlights">
+                <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Achieved FDA certification for FullFocus Viewer, the first FDA-cleared AI-powered digital pathology platform for primary diagnosis.</span></li>
+                <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Led the GM MyRewards integration at Snap-On (Dealer-FX), securing preferred vendor status across all GM dealerships in North America.</span></li>
+                <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Represented Fleet Complete at the AT&amp;T IoT Civic Hackathon in Indianapolis.</span></li>
+                <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Delivered a $3M project for City of Ottawa in 2016, leading to promotion.</span></li>
+                <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Presented a marketing product at a CBC News showcase; purchased by Shoppers Drug Mart and two other companies.</span></li>
+            </ul>
+        </div>
+        <div>
+            <span class="eyebrow reveal">Education &amp; certifications</span>
+            <h2 class="subhead reveal">Academic background</h2>
+            <ul class="edu">
+                <li class="reveal"><strong>Post Graduate Diploma, Information Technology</strong><span>Humber Institute of Technology and Advanced Learning, Toronto</span><span class="yr">2012 – 2014</span></li>
+                <li class="reveal"><strong>B.Tech, Electrical Engineering</strong><span>West Bengal University of Technology, India</span><span class="yr">2009 – 2012</span></li>
+                <li class="reveal"><strong>Diploma in Electrical Engineering</strong><span>Ramakrishna Mission Shilpapitha College / WBSCTE, India</span><span class="yr">2006 – 2009</span></li>
+            </ul>
+            <div class="certs reveal">
+                <span>Microsoft Certified: Azure Fundamentals (2020)</span>
+                <span>AWS Certified AI Practitioner (In Progress, 2026)</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="band contact" id="contact">
+    <div class="wrap">
+        <span class="eyebrow reveal">Get in touch</span>
+        <h2 class="title reveal">Let's connect.</h2>
+        <div class="email-row reveal">
+            <a class="email" href="mailto:prithwirajdas07@gmail.com">prithwirajdas07@gmail.com</a>
+            <button class="btn btn-ghost" type="button" id="copy">Copy</button>
+            <span class="copied" id="copied" aria-live="polite"></span>
+        </div>
+        <div class="contact-list reveal">
+            <span>+1 (647) 705-6210</span>
+            <a href="https://linkedin.com/in/prithwirajdas" target="_blank" rel="noopener">linkedin.com/in/prithwirajdas</a>
+            <a href="https://github.com/prithwirajdas007" target="_blank" rel="noopener">github.com/prithwirajdas007</a>
+            <span>Greater Toronto Area, Canada</span>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="wrap">© <span id="year">2026</span> Prithwiraj Das</div>
+</footer>
+
+<script>
+(function () {
+    var root = document.documentElement;
+
+    /* Appearance: Auto / Light / Dark segmented control. */
+    var segs = document.querySelectorAll('.seg button');
+    function current() { return root.getAttribute('data-theme') || 'auto'; }
+    function paint() { segs.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.set === current())); }); }
+    segs.forEach(function (b) {
+        b.addEventListener('click', function () {
+            var v = b.dataset.set;
+            if (v === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', v);
+            try { if (v === 'auto') localStorage.removeItem('theme'); else localStorage.setItem('theme', v); } catch (e) {}
+            paint();
+        });
+    });
+    paint();
+
+    /* Scroll-edge hairline under the bar only once content is beneath it. */
+    var bar = document.getElementById('bar');
+    function edge() { bar.classList.toggle('scrolled', window.scrollY > 4); }
+    window.addEventListener('scroll', edge, { passive: true });
+    edge();
+
+    /* Reveal on scroll; anything already on screen shows immediately. */
+    var reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+        var ro = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); ro.unobserve(en.target); } });
+        }, { rootMargin: '0px 0px -8% 0px' });
+        reveals.forEach(function (el) { ro.observe(el); });
+    } else {
+        reveals.forEach(function (el) { el.classList.add('in'); });
+    }
+
+    /* Wayfinding: mark the section currently in view. */
+    var navLinks = document.querySelectorAll('.links a');
+    var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            navLinks.forEach(function (a) {
+                if (a.getAttribute('href') === '#' + en.target.id) a.setAttribute('aria-current', 'true');
+                else a.removeAttribute('aria-current');
+            });
+        });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['experience', 'skills', 'projects', 'writing', 'contact'].forEach(function (id) {
+        var el = document.getElementById(id); if (el) spy.observe(el);
+    });
+
+    /* Earlier roles: interruptible height animation, proper expanded state. */
+    var more = document.getElementById('more');
+    var older = document.getElementById('older');
+    var olderInner = older.querySelector('.roles');
+    more.addEventListener('click', function () {
+        var open = older.classList.toggle('open');
+        more.setAttribute('aria-expanded', String(open));
+        if (open) olderInner.removeAttribute('inert'); else olderInner.setAttribute('inert', '');
+        more.querySelector('span').textContent = open ? 'Hide earlier roles' : 'Show earlier roles (2013–2019)';
+        older.querySelectorAll('.role').forEach(function (r) { r.classList.add('in'); });
+    });
+
+    /* Copy email, with a visible confirmation. */
+    var copyBtn = document.getElementById('copy');
+    var copied = document.getElementById('copied');
+    var email = document.querySelector('.email');
+    copyBtn.addEventListener('click', function () {
+        function done(msg) { copied.textContent = msg; setTimeout(function () { copied.textContent = ''; }, 2000); }
+        function fallback() {
+            var r = document.createRange(); r.selectNodeContents(email);
+            var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+            done('Selected');
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(email.textContent.trim()).then(function () { done('Copied'); }, fallback);
+        } else { fallback(); }
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
