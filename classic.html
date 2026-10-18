@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prithwiraj Das - Lead Software Engineer</title>
+    <meta name="description" content="12+ years building cloud-native, transaction-heavy SaaS systems. Distributed Systems, FinTech & Capital Markets. .NET, AWS, Event-Driven Architecture.">
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://prithwirajdas.ca/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-display: 'Newsreader', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --bg: #FAFAF7;
+            --bg-alt: #F0EFE9;
+            --bg-card: #FFFFFF;
+            --text-primary: #1A1A18;
+            --text-secondary: #5C5C56;
+            --text-tertiary: #8A8A82;
+            --accent: #2D5A3D;
+            --accent-light: #E8F0EB;
+            --accent-warm: #8B6914;
+            --accent-warm-light: #FDF6E3;
+            --border: #E2E1DB;
+            --border-light: #EDECE6;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+            --radius: 6px;
+            --max-w: 860px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        [data-theme="dark"] {
+            --bg: #141413;
+            --bg-alt: #1C1C1A;
+            --bg-card: #1E1E1C;
+            --text-primary: #E8E7E1;
+            --text-secondary: #A3A29B;
+            --text-tertiary: #6E6D67;
+            --accent: #5FA978;
+            --accent-light: #1E2E24;
+            --accent-warm: #C9A032;
+            --accent-warm-light: #2A2518;
+            --border: #2E2E2B;
+            --border-light: #252523;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text-primary);
+            font-size: 16px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            transition: background var(--transition), color var(--transition);
+        }
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border-light);
+            transition: background var(--transition), border var(--transition);
+        }
+        .nav-inner {
+            max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+            height: 56px; display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-name {
+            font-family: var(--font-display); font-weight: 600; font-size: 18px;
+            color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em;
+        }
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-links a {
+            font-size: 13px; font-weight: 500; color: var(--text-secondary);
+            text-decoration: none; transition: color var(--transition); letter-spacing: 0.02em;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .theme-toggle {
+            background: none; border: 1px solid var(--border); border-radius: 50%;
+            width: 32px; height: 32px; cursor: pointer; display: flex;
+            align-items: center; justify-content: center; color: var(--text-secondary);
+            transition: all var(--transition); font-size: 14px;
+        }
+        .theme-toggle:hover { border-color: var(--text-tertiary); color: var(--text-primary); }
+        section { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+        .section-label {
+            font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: block;
+        }
+        .section-title {
+            font-family: var(--font-display); font-size: 32px; font-weight: 500;
+            letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 32px; color: var(--text-primary);
+        }
+        .hero { padding-top: 120px; padding-bottom: 80px; }
+        .hero-layout {
+            display: flex; align-items: center; gap: 48px;
+        }
+        .hero-text { flex: 1; min-width: 0; }
+        .hero-photo {
+            width: 180px; height: 180px; border-radius: 50%; flex-shrink: 0;
+            border: 3px solid var(--border); overflow: hidden;
+        }
+        .hero-photo img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+        }
+        .hero-overline {
+            font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: block;
+        }
+        .hero h1 {
+            font-family: var(--font-display); font-size: clamp(42px, 6vw, 64px);
+            font-weight: 500; letter-spacing: -0.04em; line-height: 1.08; margin-bottom: 28px;
+        }
+        .hero h1 em { font-style: italic; color: var(--accent); }
+        .hero-summary {
+            font-size: 17px; line-height: 1.8; color: var(--text-secondary);
+            max-width: 640px; margin-bottom: 40px;
+        }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; color: var(--text-tertiary); }
+        .hero-meta a {
+            color: var(--text-secondary); text-decoration: none;
+            border-bottom: 1px solid var(--border); transition: all var(--transition);
+        }
+        .hero-meta a:hover { color: var(--accent); border-color: var(--accent); }
+        .hero-meta span::before {
+            content: ''; display: inline-block; width: 4px; height: 4px;
+            background: var(--text-tertiary); border-radius: 50%; margin-right: 8px; vertical-align: middle;
+        }
+        .divider { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+        .divider hr { border: none; height: 1px; background: var(--border); }
+        .experience, .skills, .projects, .writing, .achievements, .education, .contact {
+            padding-top: 72px; padding-bottom: 72px;
+        }
+        .role { padding: 32px 0; border-bottom: 1px solid var(--border-light); }
+        .role:last-child { border-bottom: none; }
+        .role-header {
+            display: flex; justify-content: space-between; align-items: baseline;
+            flex-wrap: wrap; gap: 8px; margin-bottom: 6px;
+        }
+        .role-title {
+            font-family: var(--font-display); font-size: 20px; font-weight: 500; letter-spacing: -0.02em;
+        }
+        .role-date { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); white-space: nowrap; }
+        .role-company { font-size: 14px; color: var(--accent); font-weight: 500; margin-bottom: 12px; }
+        .role-intro { font-size: 15px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7; }
+        .role-bullets { list-style: none; padding: 0; }
+        .role-bullets li {
+            font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+            padding-left: 16px; position: relative; margin-bottom: 8px;
+        }
+        .role-bullets li::before { content: '\2014'; position: absolute; left: 0; color: var(--text-tertiary); }
+        .role-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+        .role-tech span {
+            font-family: var(--font-mono); font-size: 11px; padding: 3px 10px;
+            background: var(--bg-alt); color: var(--text-secondary); border-radius: 3px;
+            transition: background var(--transition);
+        }
+        .older-roles { display: none; }
+        .older-roles.show { display: block; }
+        .show-more-btn {
+            font-family: var(--font-body); font-size: 14px; font-weight: 500;
+            color: var(--accent); background: none; border: 1px solid var(--accent);
+            border-radius: var(--radius); padding: 10px 24px; cursor: pointer;
+            transition: all var(--transition); margin-top: 24px; display: inline-block;
+        }
+        .show-more-btn:hover { background: var(--accent); color: white; }
+        .skills-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;
+        }
+        .skill-card {
+            padding: 24px; background: var(--bg-card); border: 1px solid var(--border-light);
+            border-radius: var(--radius); transition: all var(--transition);
+        }
+        .skill-card:hover { border-color: var(--border); box-shadow: var(--shadow-sm); }
+        .skill-card-title {
+            font-family: var(--font-display); font-size: 16px; font-weight: 500;
+            margin-bottom: 12px; letter-spacing: -0.01em;
+        }
+        .skill-card-items { font-size: 13px; color: var(--text-secondary); line-height: 1.9; }
+        .project-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
+        }
+        .project-card {
+            padding: 28px; background: var(--bg-card); border: 1px solid var(--border-light);
+            border-radius: var(--radius); transition: all var(--transition);
+        }
+        .project-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .project-card-label {
+            font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary);
+            letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;
+        }
+        .project-card-title {
+            font-family: var(--font-display); font-size: 18px; font-weight: 500;
+            margin-bottom: 10px; letter-spacing: -0.02em;
+        }
+        .project-card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; }
+        .project-card-link {
+            font-family: var(--font-mono); font-size: 12px; color: var(--accent);
+            text-decoration: none; border-bottom: 1px solid transparent; transition: border var(--transition);
+        }
+        .project-card-link:hover { border-bottom-color: var(--accent); }
+        .writing-placeholder {
+            padding: 48px; background: var(--bg-alt); border-radius: var(--radius); text-align: center;
+        }
+        .writing-placeholder p { font-size: 15px; color: var(--text-tertiary); font-style: italic; }
+        .achievement-list { list-style: none; padding: 0; display: grid; gap: 16px; }
+        .achievement-list li {
+            font-size: 15px; color: var(--text-secondary); padding-left: 28px;
+            position: relative; line-height: 1.7;
+        }
+        .achievement-list li::before {
+            content: '\25C6'; position: absolute; left: 0; color: var(--accent-warm); font-size: 10px; top: 5px;
+        }
+        .edu-grid { display: grid; gap: 20px; }
+        .edu-item {
+            display: flex; justify-content: space-between; align-items: baseline;
+            flex-wrap: wrap; gap: 8px; padding-bottom: 16px; border-bottom: 1px solid var(--border-light);
+        }
+        .edu-item:last-child { border-bottom: none; }
+        .edu-degree { font-family: var(--font-display); font-size: 16px; font-weight: 500; letter-spacing: -0.01em; }
+        .edu-school { font-size: 14px; color: var(--text-secondary); }
+        .edu-year { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); }
+        .contact-grid { display: flex; flex-wrap: wrap; gap: 32px; }
+        .contact-item { display: flex; flex-direction: column; gap: 4px; }
+        .contact-label {
+            font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--text-tertiary);
+        }
+        .contact-value { font-size: 15px; color: var(--text-primary); }
+        .contact-value a {
+            color: var(--text-primary); text-decoration: none;
+            border-bottom: 1px solid var(--border); transition: all var(--transition);
+        }
+        .contact-value a:hover { color: var(--accent); border-color: var(--accent); }
+        footer {
+            max-width: var(--max-w); margin: 0 auto; padding: 24px 24px 48px;
+            border-top: 1px solid var(--border-light); font-size: 12px; color: var(--text-tertiary);
+        }
+        .cert-tag {
+            display: inline-block; font-family: var(--font-mono); font-size: 11px;
+            padding: 3px 10px; background: var(--accent-light); color: var(--accent);
+            border-radius: 3px; margin-top: 12px;
+        }
+        .reveal {
+            opacity: 0; transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .stagger > * {
+            opacity: 0; transform: translateY(12px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
+        .stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
+        .stagger.visible > *:nth-child(3) { transition-delay: 0.15s; }
+        .stagger.visible > *:nth-child(4) { transition-delay: 0.2s; }
+        .stagger.visible > *:nth-child(5) { transition-delay: 0.25s; }
+        .stagger.visible > *:nth-child(6) { transition-delay: 0.3s; }
+        .stagger.visible > *:nth-child(7) { transition-delay: 0.35s; }
+        .stagger.visible > * { opacity: 1; transform: translateY(0); }
+        @media (max-width: 640px) {
+            .nav-links a:not(.theme-toggle):not(:last-child) { display: none; }
+            .hero h1 { font-size: 36px; }
+            .hero-layout { flex-direction: column-reverse; align-items: center; text-align: center; gap: 24px; }
+            .hero-meta { justify-content: center; }
+            .role-header { flex-direction: column; }
+            .hero-meta { flex-direction: column; gap: 8px; }
+            .contact-grid { flex-direction: column; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-name">Prithwiraj Das</a>
+        <div class="nav-links">
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">&#9788;</button>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-layout">
+        <div class="hero-text">
+            <span class="hero-overline reveal">Lead Software Engineer</span>
+            <h1 class="reveal">Building <em>distributed systems</em> for fintech &amp; capital markets</h1>
+            <p class="hero-summary reveal">
+                Software engineering leader with 12+ years building cloud-native, transaction-heavy SaaS systems across fintech, capital markets, healthcare, and enterprise SaaS. Deep expertise in .NET/C#, event-driven architecture, messaging systems (RabbitMQ, SNS/SQS, SignalR), and AWS. Versatile across Python, Node.js/TypeScript, Angular, React, and Blazor Server, with experience across PostgreSQL, SQL Server, MongoDB, MySQL, Redshift, and data warehouse pipelines. Long-time adopter of AI-assisted development, enthusiastic about how Claude, Copilot, and agentic tooling reshape engineering, while bringing the engineering judgement that decides when they accelerate delivery and when they need correction.
+            </p>
+            <div class="hero-meta reveal">
+                <span>Greater Toronto Area, Canada</span>
+                <span><a href="mailto:prithwirajdas07@gmail.com">prithwirajdas07@gmail.com</a></span>
+                <span><a href="https://linkedin.com/in/prithwirajdas" target="_blank" rel="noopener">LinkedIn</a></span>
+                <span><a href="https://github.com/prithwirajdas007" target="_blank" rel="noopener">GitHub</a></span>
+            </div>
+        </div>
+        <div class="hero-photo reveal">
+            <img src="assets/images/profile.jpg" alt="Prithwiraj Das">
+        </div>
+    </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="experience" id="experience">
+    <span class="section-label reveal">Experience</span>
+    <h2 class="section-title reveal">Where I've built things</h2>
+
+    <div class="role reveal">
+        <div class="role-header">
+            <span class="role-title">Lead Software Engineer</span>
+            <span class="role-date">Oct 2025 &#8211; Present</span>
+        </div>
+        <div class="role-company">Derivative Path, Walnut Creek, CA (Remote)</div>
+        <p class="role-intro">Driving the migration of a legacy derivatives trading platform to modern cloud-native architecture on DerivativeEDGE. Working across the full distributed pipeline: trade entry, pricing, risk, and analytics.</p>
+        <ul class="role-bullets">
+            <li>Implemented distributed tracing (OpenTelemetry) across a multi-service pricing pipeline, identifying a ~300s latency bottleneck in the Analytics Pipeline and giving leadership actionable data to prioritize optimization.</li>
+            <li>Resolved migration-blocking defects affecting all DerivativePath client migrations: multi-tenant data isolation and reversed MTM/NPV pricing values.</li>
+            <li>Designed real-time status notification architecture using event sourcing (Marten) and messaging patterns (Rebus), replacing blind polling with live visibility for risk analysts.</li>
+            <li>Piloting a Kafka-based transactional outbox for cross-service messaging, moving the platform toward reliable, replayable event delivery.</li>
+            <li>Driving delivery of five Q2 roadmap epics spanning FX Options, CVA/DVA pricing, performance, and data warehouse migration, coordinating across product, analytics, and platform teams.</li>
+        </ul>
+        <div class="role-tech">
+            <span>.NET 10</span><span>C#</span><span>Blazor Server</span><span>SignalR</span><span>Marten</span><span>Rebus</span><span>FastEndpoints</span><span>PostgreSQL</span><span>RabbitMQ</span><span>Kafka</span><span>AWS</span><span>OpenTelemetry</span><span>Docker</span>
+        </div>
+    </div>
+
+    <div class="role reveal">
+        <div class="role-header">
+            <span class="role-title">Software Development Team Lead</span>
+            <span class="role-date">Sep 2024 &#8211; Sep 2025</span>
+        </div>
+        <div class="role-company">Snap-On (Dealer-FX), Toronto, ON</div>
+        <p class="role-intro">Led two product teams on the Dealer-FX One Platform, a cloud-native SaaS suite for automotive OEMs and dealerships.</p>
+        <ul class="role-bullets">
+            <li>Led GM My Rewards integration, managing core team and contractors, securing Dealer-FX as GM's preferred vendor.</li>
+            <li>Built and deployed APIs using AWS SAM-based Node.js with Sequelize ORM for Purchase Order and Parts Inventory.</li>
+            <li>Stabilized release quality and delivery cadence, reduced hotfixes and bug escape rates, improved sprint throughput.</li>
+            <li>Managed a team of 4 developers and 2 QA engineers, reducing hotfixes by 60-70% and bug escape rates by 70-80%, with sprint throughput up 20-30%.</li>
+        </ul>
+        <div class="role-tech">
+            <span>.NET Core 8</span><span>Node.js</span><span>Sequelize</span><span>AWS Lambda</span><span>AWS SAM</span><span>PostgreSQL</span><span>Redis</span><span>Angular 16/17</span><span>GitHub Actions</span><span>Docker</span>
+        </div>
+    </div>
+
+    <div class="role reveal">
+        <div class="role-header">
+            <span class="role-title">Software Engineering Team Lead</span>
+            <span class="role-date">Apr 2023 &#8211; Sep 2024</span>
+        </div>
+        <div class="role-company">EverCommerce (Service Fusion), Toronto, ON</div>
+        <p class="role-intro">Led Service Fusion SaaS platform rewrite from monolith to microservices using Ardalis Clean Architecture. Managed a team of 4.</p>
+        <ul class="role-bullets">
+            <li>Delivered 10DLC messaging compliance transformation within a 2-month deadline, one of the first features shipped on the rewritten architecture, supporting ~600 messages/day for initial clients.</li>
+            <li>Supported data warehouse initiative via Decodable and AWS Lambda, then led delivery of the reporting microservice to early adopters within 2 months.</li>
+            <li>Standardized microservices patterns across a 4-engineer team spanning ~10 microservices, updating project templates and AWS CodeArtifact package management.</li>
+        </ul>
+        <div class="role-tech">
+            <span>.NET Core 7</span><span>C#</span><span>MySQL</span><span>AWS</span><span>Ardalis Clean Architecture</span><span>Decodable</span><span>Docker</span><span>xUnit</span>
+        </div>
+    </div>
+
+    <div class="role reveal">
+        <div class="role-header">
+            <span class="role-title">Senior Software Engineer</span>
+            <span class="role-date">May 2022 &#8211; Apr 2023</span>
+        </div>
+        <div class="role-company">BeyondTrust, Halifax, NS (Remote)</div>
+        <p class="role-intro">Contributed to the Endpoint Privilege Management (EPM) product suite, bringing microservices experience as the department transitioned to cloud-native architecture.</p>
+        <ul class="role-bullets">
+            <li>Delivered key microservices for the EPM platform and contributed to migrating a legacy product to a multi-tenant SaaS model.</li>
+            <li>Stepped up to support the DevOps team in migrating from Azure DevOps to GitHub, redesigning 14 CI/CD pipelines across Terraform and Kubernetes.</li>
+        </ul>
+        <div class="role-tech">
+            <span>.NET Core 6/7</span><span>PostgreSQL</span><span>Elasticsearch</span><span>AWS</span><span>Azure</span><span>GitHub Actions</span><span>Docker</span><span>Kubernetes</span>
+        </div>
+    </div>
+
+    <div class="role reveal">
+        <div class="role-header">
+            <span class="role-title">Senior/Lead Backend Developer</span>
+            <span class="role-date">May 2021 &#8211; May 2022</span>
+        </div>
+        <div class="role-company">Paige AI (via Velocity Global), Toronto, ON / Contract</div>
+        <p class="role-intro">Led backend development for the FullFocus Viewer, an AI-powered digital pathology platform. Oversaw API design, deployment, and cross-team integration.</p>
+        <ul class="role-bullets">
+            <li>Led the rewrite of FullFocus Viewer backend to .NET 6 across 3 microservices, serving ~50 pathologists, introducing new APIs for product integration.</li>
+            <li>Built 3 microservices in Python (Flask) for new capabilities and audit trails required for FDA certification.</li>
+            <li>Played a key role in achieving FDA certification, the first FDA-cleared AI-powered digital pathology platform for primary diagnosis.</li>
+        </ul>
+        <div class="role-tech">
+            <span>.NET Core 5/6</span><span>Python</span><span>AWS</span><span>PostgreSQL</span><span>MongoDB</span><span>Redis</span><span>Kubernetes</span><span>DataDog</span><span>GitLab CI</span>
+        </div>
+    </div>
+
+    <div class="role reveal">
+        <div class="role-header">
+            <span class="role-title">Senior/Lead Software Engineer</span>
+            <span class="role-date">Aug 2019 &#8211; May 2021</span>
+        </div>
+        <div class="role-company">Affirm (PayBright), Toronto, ON</div>
+        <p class="role-intro">Joined PayBright as Senior Developer, grew into Lead Engineering role during rapid scale (13 to 45 engineers). Contributed to hiring, mentoring, and drove foundational changes to development process before acquisition by Affirm.</p>
+        <ul class="role-bullets">
+            <li>Led Core Loan Systems rewrite into .NET Core microservices, including domain discovery and POC work shaping next-gen architecture.</li>
+            <li>Transformed database development workflow with Redgate SQL, reducing deployment time from days to hours via automated CI/CD pipelines.</li>
+            <li>Delivered key client integrations (Samsung Canada, Apple Canada), contributing to market dominance and eventual acquisition by Affirm.</li>
+            <li>Built ETL/ELT workflows using Python, Azure Data Factory, and Node.js. Created BI dashboards on Looker for stakeholders.</li>
+        </ul>
+        <div class="role-tech">
+            <span>.NET Core</span><span>C#</span><span>SQL Server</span><span>MongoDB</span><span>Node.js</span><span>Python</span><span>Azure Data Factory</span><span>Redgate SQL</span><span>Docker</span><span>Looker</span>
+        </div>
+    </div>
+
+    <div class="older-roles" id="older-roles">
+        <div class="role">
+            <div class="role-header">
+                <span class="role-title">Dynamics CRM/.NET Developer</span>
+                <span class="role-date">Nov 2018 &#8211; Aug 2019</span>
+            </div>
+            <div class="role-company">Cineplex Entertainment, Toronto, ON</div>
+            <p class="role-intro">Built features for the Corporate Fulfillment platform, a CRM and web application for Cineplex gift card sales and distribution.</p>
+            <div class="role-tech"><span>.NET</span><span>Dynamics CRM 2016</span><span>C#</span><span>SQL Server</span><span>Agility CMS</span><span>WCF</span></div>
+        </div>
+        <div class="role">
+            <div class="role-header">
+                <span class="role-title">Senior Software Developer</span>
+                <span class="role-date">Nov 2017 &#8211; Nov 2018</span>
+            </div>
+            <div class="role-company">Fleet Complete, Toronto, ON &#183; Contract</div>
+            <p class="role-intro">Modernized Courier Complete from VB6 desktop to web using REST APIs and Angular 6. Represented Fleet Complete at the AT&amp;T IoT Civic Hackathon.</p>
+            <div class="role-tech"><span>.NET</span><span>Angular 6</span><span>.NET Core</span><span>Web API 2</span><span>MVC 5</span><span>SQL Server</span></div>
+        </div>
+        <div class="role">
+            <div class="role-header">
+                <span class="role-title">Senior Software Developer</span>
+                <span class="role-date">Jun 2017 &#8211; Nov 2017</span>
+            </div>
+            <div class="role-company">Condo Control Central, Toronto, ON &#183; Contract</div>
+            <p class="role-intro">Developed features for the property management SaaS platform. Built a Status Certificate portal for condo unit owners.</p>
+            <div class="role-tech"><span>.NET</span><span>C#</span><span>MVC 3</span><span>SQL Server</span><span>DevExpress</span></div>
+        </div>
+        <div class="role">
+            <div class="role-header">
+                <span class="role-title">Software Developer</span>
+                <span class="role-date">May 2015 &#8211; Jun 2017</span>
+            </div>
+            <div class="role-company">Advanced Utility Systems, Toronto, ON</div>
+            <p class="role-intro">Key member of the CIS Infinity billing platform team. Led the Infinity.Link V4 portal rewrite on DotNetNuke. AODA compliance work enabled City of Ottawa to sign a $3M contract, the company's largest acquisition in 2016.</p>
+            <div class="role-tech"><span>.NET</span><span>DotNetNuke</span><span>SQL Server</span><span>Bootstrap 3</span><span>REST API</span><span>WCAG 2.0</span></div>
+        </div>
+        <div class="role">
+            <div class="role-header">
+                <span class="role-title">IT Consultant</span>
+                <span class="role-date">Jul 2014 &#8211; Apr 2015</span>
+            </div>
+            <div class="role-company">Dapasoft Inc, Toronto, ON</div>
+            <p class="role-intro">Delivered .NET web applications, Dynamics CRM integrations, and data migration solutions across client projects including OFIFC, Bell Fund (Bell Canada), and DATIS.</p>
+            <div class="role-tech"><span>.NET</span><span>Dynamics CRM 2013</span><span>SQL Server</span><span>Telerik UI</span><span>XRM Framework</span></div>
+        </div>
+        <div class="role">
+            <div class="role-header">
+                <span class="role-title">Software Developer (Internship)</span>
+                <span class="role-date">Nov 2013 &#8211; Apr 2014</span>
+            </div>
+            <div class="role-company">AMA Inc, Mississauga, ON</div>
+            <p class="role-intro">Built a Wi-Fi marketing portal for retail locations. Presented at a CBC News showcase event, resulting in 3 client sign-ups including Shoppers Drug Mart.</p>
+            <div class="role-tech"><span>.NET</span><span>C#</span><span>PHP</span><span>Linux</span></div>
+        </div>
+    </div>
+    <button class="show-more-btn" onclick="toggleOlderRoles(this)">Show earlier roles (2013&#8211;2019)</button>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="skills" id="skills">
+    <span class="section-label reveal">Technical skills</span>
+    <h2 class="section-title reveal">What I work with</h2>
+    <div class="skills-grid stagger">
+        <div class="skill-card">
+            <div class="skill-card-title">Languages &amp; Frameworks</div>
+            <div class="skill-card-items">C#, .NET 10, ASP.NET, Blazor Server, Python, Node.js/TypeScript, SQL, Angular, React, SignalR</div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-card-title">Cloud &amp; Infrastructure</div>
+            <div class="skill-card-items">AWS (Lambda, S3, EC2, EKS, SAM, SNS/SQS), Azure (AD, DevOps, SQL), Docker, Kubernetes, Terraform</div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-card-title">Architecture &amp; Patterns</div>
+            <div class="skill-card-items">Microservices, Event Sourcing (Marten), CQRS, Clean Architecture, FastEndpoints, Rebus, OpenTelemetry</div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-card-title">Databases &amp; Data</div>
+            <div class="skill-card-items">PostgreSQL, SQL Server, MongoDB, MySQL, Redis, Redshift, Kafka, ETL/ELT (Azure Data Factory, Decodable)</div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-card-title">DevOps &amp; CI/CD</div>
+            <div class="skill-card-items">GitHub Actions, GitLab CI, Bitbucket Pipelines, Redgate SQL</div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-card-title">AI-Assisted Engineering</div>
+            <div class="skill-card-items">Claude Code, GitHub Copilot, MCP (Model Context Protocol), Semantic Kernel, Ollama, RAG, spec-driven development</div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-card-title">Leadership</div>
+            <div class="skill-card-items">Team leadership (4 to 6 engineers), architecture ownership, code review, sprint execution, cross-functional delivery, mentoring</div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="projects" id="projects">
+    <span class="section-label reveal">Projects &amp; open source</span>
+    <h2 class="section-title reveal">Side work &amp; explorations</h2>
+    <div class="project-grid stagger">
+        <div class="project-card">
+            <div class="project-card-label">Showcase</div>
+            <div class="project-card-title">WorkerSagaDemo</div>
+            <div class="project-card-desc">Distributed saga orchestration with AI trade classification. Rebus sagas, transactional outbox, Semantic Kernel + Ollama, SignalR real-time UI, .NET Aspire, OpenTelemetry custom spans.</div>
+            <a href="https://github.com/prithwirajdas007/WorkerSagaDemo" target="_blank" rel="noopener" class="project-card-link">View on GitHub &#8594;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-label">Showcase</div>
+            <div class="project-card-title">ServiceTrackr</div>
+            <div class="project-card-desc">Secure .NET 9 Web API with clean architecture, JWT auth with refresh tokens, PostgreSQL with EF Core, Redis caching, Docker-ready.</div>
+            <a href="https://github.com/prithwirajdas007/ServiceTrackr" target="_blank" rel="noopener" class="project-card-link">View on GitHub &#8594;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-label">In Progress</div>
+            <div class="project-card-title">dotnet-marten-starter</div>
+            <div class="project-card-desc">Reference implementation for event sourcing and CQRS with Marten on PostgreSQL.</div>
+            <a href="https://github.com/prithwirajdas007/dotnet-marten-starter" target="_blank" rel="noopener" class="project-card-link">View on GitHub &#8594;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-label">Reference</div>
+            <div class="project-card-title">dotnet-architecture-decisions</div>
+            <div class="project-card-desc">Architecture decision records and notes on distributed .NET. Outbox, sagas, observability, and the tradeoffs behind them.</div>
+            <a href="https://github.com/prithwirajdas007/dotnet-architecture-decisions" target="_blank" rel="noopener" class="project-card-link">View on GitHub &#8594;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-label">Reference</div>
+            <div class="project-card-title">dotnet-otel-cookbook</div>
+            <div class="project-card-desc">Practical OpenTelemetry recipes for .NET. Custom spans, metrics, and traces across messaging, sagas, and AI calls.</div>
+            <a href="https://github.com/prithwirajdas007/dotnet-otel-cookbook" target="_blank" rel="noopener" class="project-card-link">View on GitHub &#8594;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-label">Planned</div>
+            <div class="project-card-title">ContextForge</div>
+            <div class="project-card-desc">AI context platform exploring RAG fundamentals, polyglot storage, and MCP integration.</div>
+            <a href="https://github.com/prithwirajdas007/ContextForge" target="_blank" rel="noopener" class="project-card-link">View on GitHub &#8594;</a>
+        </div>
+    </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="writing" id="writing">
+    <span class="section-label reveal">Writing</span>
+    <h2 class="section-title reveal">Technical articles</h2>
+    <div class="project-grid stagger">
+        <div class="project-card">
+            <div class="project-card-label">2026</div>
+            <div class="project-card-title">The bugs were never in the new code</div>
+            <div class="project-card-desc">Adding one feature to a live multi-tenant system surfaced three stacked bugs, all rooted in the old code's unwritten assumptions rather than the new code itself.</div>
+            <a href="https://medium.com/@prithwirajdas07" target="_blank" rel="noopener" class="project-card-link">Read on Medium &#8594;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-label">April 2026</div>
+            <div class="project-card-title">Feature flags are not a free lunch</div>
+            <div class="project-card-desc">What I learned about the hidden cost of feature flags after migrating between flag providers in production, and why treating them as free switches leads to real problems.</div>
+            <a href="https://medium.com/@prithwirajdas07/feature-flags-are-not-a-free-lunch-fb8cc82b3f10" target="_blank" rel="noopener" class="project-card-link">Read on Medium &#8594;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-label">April 2026</div>
+            <div class="project-card-title">What goes wrong when you switch branching strategies mid-flight</div>
+            <div class="project-card-desc">Lessons from switching branching strategies on an active codebase. What broke, what worked, and what I would do differently next time.</div>
+            <a href="https://medium.com/@prithwirajdas07/what-goes-wrong-when-you-switch-branching-strategies-mid-flight-5b01423e5626" target="_blank" rel="noopener" class="project-card-link">Read on Medium &#8594;</a>
+        </div>
+        <div class="project-card">
+            <div class="project-card-label">March 2026</div>
+            <div class="project-card-title">What broke my JWT flow in Blazor Server and how I fixed it</div>
+            <div class="project-card-desc">Three issues I hit in production with HttpContext, token caching, and IHttpClientFactory handler pooling. Here is what fixed each one.</div>
+            <a href="https://medium.com/@prithwirajdas07/what-broke-my-jwt-flow-in-blazor-server-and-how-i-fixed-it-50df948a64dd" target="_blank" rel="noopener" class="project-card-link">Read on Medium &#8594;</a>
+        </div>
+    </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="achievements" id="achievements">
+    <span class="section-label reveal">Highlights</span>
+    <h2 class="section-title reveal">Notable achievements</h2>
+    <ul class="achievement-list stagger">
+        <li>Achieved FDA certification for FullFocus Viewer, the first FDA-cleared AI-powered digital pathology platform for primary diagnosis.</li>
+        <li>Led the GM MyRewards integration at Snap-On (Dealer-FX), securing preferred vendor status across all GM dealerships in North America.</li>
+        <li>Represented Fleet Complete at the AT&amp;T IoT Civic Hackathon in Indianapolis.</li>
+        <li>Delivered a $3M project for City of Ottawa in 2016, leading to promotion.</li>
+        <li>Presented a marketing product at a CBC News showcase; purchased by Shoppers Drug Mart and two other companies.</li>
+    </ul>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="education" id="education">
+    <span class="section-label reveal">Education &amp; certifications</span>
+    <h2 class="section-title reveal">Academic background</h2>
+    <div class="edu-grid stagger">
+        <div class="edu-item">
+            <div>
+                <div class="edu-degree">Post Graduate Diploma, Information Technology</div>
+                <div class="edu-school">Humber Institute of Technology and Advanced Learning, Toronto</div>
+            </div>
+            <div class="edu-year">2012 &#8211; 2014</div>
+        </div>
+        <div class="edu-item">
+            <div>
+                <div class="edu-degree">B.Tech, Electrical Engineering</div>
+                <div class="edu-school">West Bengal University of Technology, India</div>
+            </div>
+            <div class="edu-year">2009 &#8211; 2012</div>
+        </div>
+        <div class="edu-item">
+            <div>
+                <div class="edu-degree">Diploma in Electrical Engineering</div>
+                <div class="edu-school">Ramakrishna Mission Shilpapitha College / WBSCTE, India</div>
+            </div>
+            <div class="edu-year">2006 &#8211; 2009</div>
+        </div>
+    </div>
+    <div class="cert-tag">Microsoft Certified: Azure Fundamentals (2020), AWS Certified AI Practitioner (In Progress, 2026)</div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="contact" id="contact">
+    <span class="section-label reveal">Get in touch</span>
+    <h2 class="section-title reveal">Let's connect</h2>
+    <div class="contact-grid stagger">
+        <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <span class="contact-value"><a href="mailto:prithwirajdas07@gmail.com">prithwirajdas07@gmail.com</a></span>
+        </div>
+        <div class="contact-item">
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">+1 (647) 705-6210</span>
+        </div>
+        <div class="contact-item">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value"><a href="https://linkedin.com/in/prithwirajdas" target="_blank" rel="noopener">linkedin.com/in/prithwirajdas</a></span>
+        </div>
+        <div class="contact-item">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value"><a href="https://github.com/prithwirajdas007" target="_blank" rel="noopener">github.com/prithwirajdas007</a></span>
+        </div>
+        <div class="contact-item">
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Greater Toronto Area, Canada</span>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&#169; 2026 Prithwiraj Das</p>
+</footer>
+
+<script>
+function toggleTheme(){var h=document.documentElement,c=h.getAttribute('data-theme'),n=c==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);document.querySelector('.theme-toggle').innerHTML=n==='dark'?'&#9790;':'&#9788;'}
+(function(){var s=localStorage.getItem('theme');if(s){document.documentElement.setAttribute('data-theme',s);if(s==='dark')document.querySelector('.theme-toggle').innerHTML='&#9790;'}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','dark');document.querySelector('.theme-toggle').innerHTML='&#9790;'}})();
+var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.stagger').forEach(function(el){obs.observe(el)});
+function toggleOlderRoles(btn){var r=document.getElementById('older-roles');r.classList.toggle('show');btn.textContent=r.classList.contains('show')?'Hide earlier roles':'Show earlier roles (2013\u20132019)'}
+</script>
+</body>
+</html>
