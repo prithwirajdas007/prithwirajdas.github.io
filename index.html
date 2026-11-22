@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Prithwiraj Das - Lead Software Engineer</title>
+<title>Prithwiraj Das - Senior / Lead Software Engineer</title>
 <meta name="description" content="12+ years building cloud-native, transaction-heavy SaaS systems. Distributed Systems, FinTech & Capital Markets. .NET, AWS, Event-Driven Architecture.">
 <link rel="canonical" href="https://prithwirajdas.ca/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://prithwirajdas.ca/">
-<meta property="og:title" content="Prithwiraj Das - Lead Software Engineer">
+<meta property="og:title" content="Prithwiraj Das - Senior / Lead Software Engineer">
 <meta property="og:description" content="Building distributed systems for fintech &amp; capital markets. 12+ years of cloud-native, event-driven .NET on AWS.">
 <meta property="og:image" content="https://prithwirajdas.ca/assets/images/profile-400.jpg">
 <meta name="twitter:card" content="summary">
@@ -386,9 +386,9 @@ footer { padding-block: 1.75rem 3rem; font-size: 0.75rem; color: var(--fg-2); bo
 <section class="band hero" id="top">
     <div class="wrap hero-grid">
         <div>
-            <p class="role-line">Lead Software Engineer</p>
+            <p class="role-line">Senior / Lead Software Engineer</p>
             <h1>Building <span class="hl">distributed systems</span> for fintech &amp; capital markets.</h1>
-            <p class="lede">Software engineering leader with 12+ years building cloud-native, transaction-heavy SaaS systems across fintech, capital markets, healthcare, and enterprise SaaS. Deep expertise in .NET/C#, event-driven architecture, messaging systems (RabbitMQ, SNS/SQS, SignalR), and AWS. Versatile across Python, Node.js/TypeScript, Angular, React, and Blazor Server, with experience across PostgreSQL, SQL Server, MongoDB, MySQL, Redshift, and data warehouse pipelines. Long-time adopter of AI-assisted development, enthusiastic about how Claude, Copilot, and agentic tooling reshape engineering, while bringing the engineering judgement that decides when they accelerate delivery and when they need correction.</p>
+            <p class="lede">Senior .NET engineer with 12+ years on transaction-heavy SaaS systems in fintech, capital markets and healthcare. Core stack: C#/.NET 10, event-driven architecture with Kafka, RabbitMQ and Rebus, Marten event sourcing, PostgreSQL and SQL Server, AWS, and OpenTelemetry for observability. Led teams of 4 to 6 engineers through architecture decisions, production releases and cross-team delivery.</p>
             <div class="actions">
                 <a class="btn btn-primary" href="#contact">Get in touch</a>
                 <a class="btn btn-ghost" href="https://linkedin.com/in/prithwirajdas" target="_blank" rel="noopener">LinkedIn</a>
@@ -409,35 +409,44 @@ footer { padding-block: 1.75rem 3rem; font-size: 0.75rem; color: var(--fg-2); bo
 
         <div class="roles">
             <article class="role reveal">
-                <div class="when">Oct 2025 – Present</div>
+                <div class="when">Nov 2025 – Present</div>
                 <div>
-                    <h3>Lead Software Engineer</h3>
+                    <h3>Senior/Lead Software Engineer</h3>
                     <p class="org">Derivative Path · Walnut Creek, CA (Remote)</p>
                     <p class="intro">Driving the migration of a legacy derivatives trading platform to modern cloud-native architecture on DerivativeEDGE. Working across the full distributed pipeline: trade entry, pricing, risk, and analytics.</p>
                     <ul class="points">
-                        <li>Implemented distributed tracing (OpenTelemetry) across a multi-service pricing pipeline, identifying a ~300s latency bottleneck in the Analytics Pipeline and giving leadership actionable data to prioritize optimization.</li>
-                        <li>Resolved migration-blocking defects affecting all DerivativePath client migrations: multi-tenant data isolation and reversed MTM/NPV pricing values.</li>
-                        <li>Designed real-time status notification architecture using event sourcing (Marten) and messaging patterns (Rebus), replacing blind polling with live visibility for risk analysts.</li>
-                        <li>Piloting a Kafka-based transactional outbox for cross-service messaging, moving the platform toward reliable, replayable event delivery.</li>
-                        <li>Driving delivery of five Q2 roadmap epics spanning FX Options, CVA/DVA pricing, performance, and data warehouse migration, coordinating across product, analytics, and platform teams.</li>
+                        <li>Unblocked client migration by resolving critical production defects and instrumenting distributed tracing (OpenTelemetry) across the pricing pipeline, identifying a 300-second pricing bottleneck for architecture leadership.</li>
+                        <li>Leading the production migration from Azure Event Hubs to Kafka (AWS MSK) via the transactional outbox, with flag-gated parallel-run cutover and Protobuf contracts on Confluent Schema Registry.</li>
+                        <li>Designed real-time pricing notification architecture using Marten event sourcing and Rebus sagas, replacing blind polling for risk analysts.</li>
+                        <li>Driving quarterly roadmap planning across three consecutive quarters, sequencing delivery across FX Options, CVA/DVA risk, performance, and data warehouse migration.</li>
                     </ul>
                     <div class="chips"><span>.NET 10</span><span>C#</span><span>Blazor Server</span><span>SignalR</span><span>Marten</span><span>Rebus</span><span>FastEndpoints</span><span>PostgreSQL</span><span>RabbitMQ</span><span>Kafka</span><span>AWS</span><span>OpenTelemetry</span><span>Docker</span></div>
                 </div>
             </article>
 
             <article class="role reveal">
-                <div class="when">Sep 2024 – Sep 2025</div>
+                <div class="when">Aug 2025 – Nov 2025</div>
+                <div>
+                    <h3>Software Engineering Team Lead</h3>
+                    <p class="org">Method CRM · Toronto, ON</p>
+                    <p class="intro">Led two product teams, split 50/50 between people leadership and hands-on engineering. Parallelized the DB migration service for a 3-5x speedup with no regressions.</p>
+                </div>
+            </article>
+
+            <article class="role reveal">
+                <div class="when">Sep 2024 – Jul 2025</div>
                 <div>
                     <h3>Software Development Team Lead</h3>
-                    <p class="org">Snap-On (Dealer-FX) · Toronto, ON</p>
+                    <p class="org">Snap-on (Dealer-FX) · Toronto, ON</p>
                     <p class="intro">Led two product teams on the Dealer-FX One Platform, a cloud-native SaaS suite for automotive OEMs and dealerships.</p>
                     <ul class="points">
-                        <li>Led GM My Rewards integration, managing core team and contractors, securing Dealer-FX as GM's preferred vendor.</li>
-                        <li>Built and deployed APIs using AWS SAM-based Node.js with Sequelize ORM for Purchase Order and Parts Inventory.</li>
-                        <li>Stabilized release quality and delivery cadence, reduced hotfixes and bug escape rates, improved sprint throughput.</li>
-                        <li>Managed a team of 4 developers and 2 QA engineers, reducing hotfixes by 60-70% and bug escape rates by 70-80%, with sprint throughput up 20-30%.</li>
+                        <li>Led the engineering team on the GM My Rewards OEM integration, under the project manager and engineering director.</li>
+                        <li>Key member of the team building Purchase Order and Parts Inventory APIs (AWS SAM, Node.js, Sequelize).</li>
+                        <li>Added Redis TTL-based edit locking so concurrent users could not overwrite each other's changes.</li>
+                        <li>Fixed transactional correctness in Split Payments so partial payments could not leave orders in a broken state.</li>
+                        <li>Added deeper PR reviews, consolidated work and release gates: hotfixes dropped from 1-2 a week to 1-2 every 2-3 weeks, escaped-bug rework fell from 30% to 10% of the next sprint, and velocity rose from 25-30 to 35-40 points.</li>
                     </ul>
-                    <div class="chips"><span>.NET Core 8</span><span>Node.js</span><span>Sequelize</span><span>AWS Lambda</span><span>AWS SAM</span><span>PostgreSQL</span><span>Redis</span><span>Angular 16/17</span><span>GitHub Actions</span><span>Docker</span></div>
+                    <div class="chips"><span>.NET 8</span><span>Node.js</span><span>Sequelize</span><span>AWS Lambda</span><span>AWS SAM</span><span>PostgreSQL</span><span>Redis</span><span>Angular 16/17</span><span>GitHub Actions</span><span>Docker</span></div>
                 </div>
             </article>
 
@@ -452,7 +461,7 @@ footer { padding-block: 1.75rem 3rem; font-size: 0.75rem; color: var(--fg-2); bo
                         <li>Supported data warehouse initiative via Decodable and AWS Lambda, then led delivery of the reporting microservice to early adopters within 2 months.</li>
                         <li>Standardized microservices patterns across a 4-engineer team spanning ~10 microservices, updating project templates and AWS CodeArtifact package management.</li>
                     </ul>
-                    <div class="chips"><span>.NET Core 7</span><span>C#</span><span>MySQL</span><span>AWS</span><span>Ardalis Clean Architecture</span><span>Decodable</span><span>Docker</span><span>xUnit</span></div>
+                    <div class="chips"><span>.NET 7</span><span>C#</span><span>MySQL</span><span>AWS</span><span>Ardalis Clean Architecture</span><span>Decodable</span><span>Docker</span><span>xUnit</span></div>
                 </div>
             </article>
 
@@ -466,7 +475,7 @@ footer { padding-block: 1.75rem 3rem; font-size: 0.75rem; color: var(--fg-2); bo
                         <li>Delivered key microservices for the EPM platform and contributed to migrating a legacy product to a multi-tenant SaaS model.</li>
                         <li>Stepped up to support the DevOps team in migrating from Azure DevOps to GitHub, redesigning 14 CI/CD pipelines across Terraform and Kubernetes.</li>
                     </ul>
-                    <div class="chips"><span>.NET Core 6/7</span><span>PostgreSQL</span><span>Elasticsearch</span><span>AWS</span><span>Azure</span><span>GitHub Actions</span><span>Docker</span><span>Kubernetes</span></div>
+                    <div class="chips"><span>.NET 6/7</span><span>PostgreSQL</span><span>Elasticsearch</span><span>AWS</span><span>Azure</span><span>GitHub Actions</span><span>Docker</span><span>Kubernetes</span></div>
                 </div>
             </article>
 
@@ -478,10 +487,10 @@ footer { padding-block: 1.75rem 3rem; font-size: 0.75rem; color: var(--fg-2); bo
                     <p class="intro">Led backend development for the FullFocus Viewer, an AI-powered digital pathology platform. Oversaw API design, deployment, and cross-team integration.</p>
                     <ul class="points">
                         <li>Led the rewrite of FullFocus Viewer backend to .NET 6 across 3 microservices, serving ~50 pathologists, introducing new APIs for product integration.</li>
-                        <li>Built 3 microservices in Python (Flask) for new capabilities and audit trails required for FDA certification.</li>
-                        <li>Played a key role in achieving FDA certification, the first FDA-cleared AI-powered digital pathology platform for primary diagnosis.</li>
+                        <li>Built 3 microservices in Python (Flask) for new capabilities and audit trails required for FDA clearance.</li>
+                        <li>Played a key role in achieving FDA 510(k) clearance for FullFocus Viewer for primary diagnosis.</li>
                     </ul>
-                    <div class="chips"><span>.NET Core 5/6</span><span>Python</span><span>AWS</span><span>PostgreSQL</span><span>MongoDB</span><span>Redis</span><span>Kubernetes</span><span>DataDog</span><span>GitLab CI</span></div>
+                    <div class="chips"><span>.NET 5/6</span><span>Python</span><span>AWS</span><span>PostgreSQL</span><span>MongoDB</span><span>Redis</span><span>Kubernetes</span><span>DataDog</span><span>GitLab CI</span></div>
                 </div>
             </article>
 
@@ -489,12 +498,12 @@ footer { padding-block: 1.75rem 3rem; font-size: 0.75rem; color: var(--fg-2); bo
                 <div class="when">Aug 2019 – May 2021</div>
                 <div>
                     <h3>Senior/Lead Software Engineer</h3>
-                    <p class="org">Affirm (PayBright) · Toronto, ON</p>
+                    <p class="org">PayBright (acquired by Affirm) · Toronto, ON</p>
                     <p class="intro">Joined PayBright as Senior Developer, grew into Lead Engineering role during rapid scale (13 to 45 engineers). Contributed to hiring, mentoring, and drove foundational changes to development process before acquisition by Affirm.</p>
                     <ul class="points">
                         <li>Led Core Loan Systems rewrite into .NET Core microservices, including domain discovery and POC work shaping next-gen architecture.</li>
                         <li>Transformed database development workflow with Redgate SQL, reducing deployment time from days to hours via automated CI/CD pipelines.</li>
-                        <li>Delivered key client integrations (Samsung Canada, Apple Canada), contributing to market dominance and eventual acquisition by Affirm.</li>
+                        <li>Delivered key client integrations (Samsung Canada, Apple Canada).</li>
                         <li>Built ETL/ELT workflows using Python, Azure Data Factory, and Node.js. Created BI dashboards on Looker for stakeholders.</li>
                     </ul>
                     <div class="chips"><span>.NET Core</span><span>C#</span><span>SQL Server</span><span>MongoDB</span><span>Node.js</span><span>Python</span><span>Azure Data Factory</span><span>Redgate SQL</span><span>Docker</span><span>Looker</span></div>
@@ -572,11 +581,12 @@ footer { padding-block: 1.75rem 3rem; font-size: 0.75rem; color: var(--fg-2); bo
         <span class="eyebrow reveal">Technical skills</span>
         <h2 class="title reveal">What I work with.</h2>
         <div class="bento">
-            <div class="tile reveal"><h3>Languages &amp; Frameworks</h3><p>C#, .NET 10, ASP.NET, Blazor Server, Python, Node.js/TypeScript, SQL, Angular, React, SignalR</p></div>
-            <div class="tile reveal"><h3>Cloud &amp; Infrastructure</h3><p>AWS (Lambda, S3, EC2, EKS, SAM, SNS/SQS), Azure (AD, DevOps, SQL), Docker, Kubernetes, Terraform</p></div>
-            <div class="tile reveal"><h3>Architecture &amp; Patterns</h3><p>Microservices, Event Sourcing (Marten), CQRS, Clean Architecture, FastEndpoints, Rebus, OpenTelemetry</p></div>
-            <div class="tile reveal"><h3>Databases &amp; Data</h3><p>PostgreSQL, SQL Server, MongoDB, MySQL, Redis, Redshift, Kafka, ETL/ELT (Azure Data Factory, Decodable)</p></div>
-            <div class="tile reveal"><h3>DevOps &amp; CI/CD</h3><p>GitHub Actions, GitLab CI, Bitbucket Pipelines, Redgate SQL</p></div>
+            <div class="tile reveal"><h3>Languages &amp; Frameworks</h3><p>C#, .NET 10, ASP.NET Core (REST APIs), Entity Framework Core, FastEndpoints, Blazor, SignalR, Python, Node.js, TypeScript, Angular, React, SQL</p></div>
+            <div class="tile reveal"><h3>Architecture &amp; Patterns</h3><p>Microservices, Event Sourcing (Marten), CQRS, Clean Architecture, Transactional Outbox</p></div>
+            <div class="tile reveal"><h3>Messaging &amp; Integration</h3><p>Kafka, RabbitMQ, Rebus, SNS/SQS</p></div>
+            <div class="tile reveal"><h3>Databases</h3><p>PostgreSQL, SQL Server, MongoDB, MySQL, Redis, Redshift, ETL/ELT (Azure Data Factory, Decodable)</p></div>
+            <div class="tile reveal"><h3>Cloud &amp; Infrastructure</h3><p>AWS (Lambda, S3, EC2, EKS, MSK, SAM, SNS/SQS), Azure (AD, DevOps, SQL), Docker, Kubernetes, Terraform, OpenTelemetry</p></div>
+            <div class="tile reveal"><h3>Testing &amp; CI/CD</h3><p>xUnit, GitHub Actions, GitLab CI, Bitbucket Pipelines, Redgate SQL</p></div>
             <div class="tile reveal"><h3>Leadership</h3><p>Team leadership (4 to 6 engineers), architecture ownership, code review, sprint execution, cross-functional delivery, mentoring</p></div>
             <div class="tile wide reveal"><h3>AI-Assisted Engineering</h3><p>Claude Code, GitHub Copilot, MCP (Model Context Protocol), Semantic Kernel, Ollama, RAG, spec-driven development</p></div>
         </div>
@@ -667,10 +677,11 @@ footer { padding-block: 1.75rem 3rem; font-size: 0.75rem; color: var(--fg-2); bo
             <span class="eyebrow reveal">Highlights</span>
             <h2 class="subhead reveal">Notable achievements</h2>
             <ul class="highlights">
-                <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Achieved FDA certification for FullFocus Viewer, the first FDA-cleared AI-powered digital pathology platform for primary diagnosis.</span></li>
-                <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Led the GM MyRewards integration at Snap-On (Dealer-FX), securing preferred vendor status across all GM dealerships in North America.</span></li>
+                <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Contributed to FDA 510(k) clearance of FullFocus Viewer, Paige's whole-slide image viewer for primary diagnosis.</span></li>
+                <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Led the engineering team on GM My Rewards integration at Snap-on (Dealer-FX), supporting Dealer-FX's preferred vendor status with GM across North America.</span></li>
+                <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Traced a 300-second pricing bottleneck at Derivative Path with OpenTelemetry distributed tracing.</span></li>
                 <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Represented Fleet Complete at the AT&amp;T IoT Civic Hackathon in Indianapolis.</span></li>
-                <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Delivered a $3M project for City of Ottawa in 2016, leading to promotion.</span></li>
+                <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Delivered a $3M project for City of Ottawa within budget and timeline, leading to promotion (Advanced Utility Systems).</span></li>
                 <li class="reveal"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.9 5.6H16l-4.9 3.6 1.9 5.8L8 11.4 3 15l1.9-5.8L0 5.6h6.1z"/></svg><span>Presented a marketing product at a CBC News showcase; purchased by Shoppers Drug Mart and two other companies.</span></li>
             </ul>
         </div>
@@ -684,7 +695,6 @@ footer { padding-block: 1.75rem 3rem; font-size: 0.75rem; color: var(--fg-2); bo
             </ul>
             <div class="certs reveal">
                 <span>Microsoft Certified: Azure Fundamentals (2020)</span>
-                <span>AWS Certified AI Practitioner (In Progress, 2026)</span>
             </div>
         </div>
     </div>
